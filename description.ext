@@ -1,0 +1,218 @@
+respawn="BASE";
+respawnDelay=0;
+disabledAI=1;
+disableChannels[] = {{0,false,true}, {2,true,true}}; // 0 = global, 1 = side, 2 = command // new syntax: {{channel<number>, disableText<bool>, disableVoice<bool>}, ...};
+// side voice is disabled for indies in client\preInit.sqf
+joinUnassigned = 0;
+enableItemsDropping = 0;
+forceRotorLibSimulation = 0; // if you set this to 1, you deny freedom of choice to the players, which is the very principle this mission is built upon
+weaponPool = 0;
+unsafeCVL = 1; // required for store selling bins and private storage
+corpseManagerMode = 1;
+corpseRemovalMinTime = 30*60;
+corpseRemovalMaxTime = 30*60;
+wreckManagerMode = 1;
+wreckRemovalMinTime = 5*60;
+wreckRemovalMaxTime = 10*60;
+enableDebugConsole = 1;
+respawnDialog = 0; // do not enable this, otherwise the default scoreboard will overlap with the new one
+onPauseScript = "client\clientEvents\onPause.sqf";
+class Header
+{
+	gameType=Sandbox;
+	minPlayers=1;
+	maxPlayers=146; // 144 players, 2 headless clients
+};
+author="Choco + A3Wasteland";
+onLoadName = "arma3.Chocoland.tv 3in1- Fun Server |  A3Wasteland"; 
+onLoadMission = "3in1 : Basebuilding -Battle Royale and Hide and Seek | Persistent | Parastore | 100.000€ start";
+overviewText = "Chocoland is a fun map where you have 3 Elements in 1 - Battle - Basebuilding and Hide and Seek, choose your way with our new progression system";
+overviewTextLocked = "Chocoland is a fun map where you have 3 Elements in 1 - Battle - Basebuilding and Hide and Seek, choose your way with our new progression system";
+overviewPicture = "mapConfig\Loading.paa";
+loadScreen = "mapConfig\Loading.paa";
+briefing = 0; // if 0, skip Continue button
+
+#include "debugFlag.hpp"
+
+// A3W UI color (default = sky blue)
+
+#define A3W_UICOLOR_R  0.25 // default = 0.25
+#define A3W_UICOLOR_G  0.51 // default = 0.51
+#define A3W_UICOLOR_B  0.96 // default = 0.96
+
+//Dialog includes
+
+#include "client\gui_base.hpp"
+#include "addons\R3F_ARTY_AND_LOG\desc_include.h"
+#include "client\systems\ui_toolkit.hpp"
+#include "client\systems\common.hpp"
+#include "client\items\warchest\dialog.hpp"
+#include "client\items\atm\atm_gui.hpp"
+#include "client\items\artillery\artillery_gui.hpp"
+#include "client\actions\gui.hpp"
+#include "addons\far_revive\reviveBlank_gui.hpp"
+#include "client\systems\playerMenu\dialog\player_settings.hpp"
+#include "client\systems\groups\dialog\groupManagement.hpp"
+#include "client\systems\gunStore\dialog\gunshop_settings.hpp"
+#include "client\systems\generalStore\dialog\genstore_settings.hpp"
+#include "client\systems\vehicleStore\dialog\vehiclestore_settings.hpp"
+#include "client\systems\vehicleStore\dialog\vehpaint_gui.hpp"
+#include "client\systems\adminPanel\dialog\adminMenu.hpp"
+#include "client\systems\adminPanel\dialog\modMenu.hpp"
+#include "client\systems\adminPanel\dialog\serverAdminMenu.hpp"
+#include "client\systems\adminPanel\dialog\debugMenu.hpp"
+#include "client\systems\adminPanel\dialog\playerMenu.hpp"
+#include "client\systems\adminPanel\dialog\vehicleManagement.hpp"
+#include "client\systems\adminPanel\dialog\markerLog.hpp"
+#include "client\systems\adminPanel\dialog\objectSearch.hpp"
+#include "client\systems\playerMenu\dialog\respawn_dialog.hpp"
+#include "client\systems\playerMenu\dialog\teamkill_dialog.hpp"
+#include "client\systems\killFeed\killFeedMenu_gui.hpp"
+#include "addons\proving_ground\PG_config.hpp"
+#include "addons\outlw_magrepack\config.hpp"
+#include "addons\gui\gui.hpp"
+#include "addons\parking\list_simple_menu.hpp"
+#include "addons\CHVD\dialog.hpp"
+
+class RscTitles
+{
+	#include "addons\proving_ground\PG_rsctitles.hpp"
+	#include "addons\lsd_nvg\RscTitles.hpp"
+	#include "client\systems\hud\dialog\hud.hpp"
+	#include "client\systems\playerMenu\dialog\welcome.hpp"
+	#include "client\systems\scoreboard\score_gui.hpp"
+	#include "client\systems\killFeed\killFeed_gui.hpp"
+	#include "addons\far_revive\revive_gui.hpp"
+};
+
+class CfgDebriefing
+{
+	class ErrorSteamID
+	{
+		title = "Error";
+		subtitle = "";
+		description = "The server is unable to find your Steam ID due to an Arma engine network bug. Please rejoin the server.<br/>If the problem persists after rejoining, please restart the game.";
+	};
+};
+
+class CfgFunctions
+{
+	class A3W
+	{
+		#include "client\CfgFunctions.hpp"
+		#include "server\CfgFunctions.hpp"
+	};
+
+	#include "addons\CHVD\CfgFunctions.hpp"
+};
+
+class CfgNotifications
+{
+	#include "client\CfgNotifications.hpp"
+};
+
+
+class CfgSounds
+{
+	sounds[] = {};
+	#include "client\CfgSounds.hpp"
+	class earthquake_03
+	{
+		name = "earthquake_03";
+		sound[] = {"\sound\earthquake_03.ogg",0.7,1};
+		titles[] = {1, ""};
+	};
+	class earthquake_02
+	{
+		name = "earthquake_02";
+		sound[] = {"\sound\earthquake_02.ogg",0.7, 1};
+		titles[] = {1, ""};
+	};
+	class ambient_com
+	{
+		name = "ambient_com";
+		sound[] = {"\sound\ambient_com.ogg", 1, 1};
+		titles[] = {1, ""};
+	};
+	class ambient_fantoma
+	{
+		name = "ambient_fantoma";
+		sound[] = {"\sound\ambient_fantoma.ogg", 1, 1};
+		titles[] = {1, ""};
+	};
+	class ambient_fundal
+	{
+		name = "ambient_fundal";
+		sound[] = {"\sound\ambient_fundal.ogg", 1, 1};
+		titles[] = {1, ""};
+	};
+	class ambient_hall
+	{
+		name = "ambient_hall";
+		sound[] = {"\sound\ambient_hall.ogg", 1, 1};
+		titles[] = {1, ""};
+	};
+	class ambient_industrial
+	{
+		name = "ambient_industrial";
+		sound[] = {"\sound\ambient_industrial.ogg", 1, 1};
+		titles[] = {1, ""};
+	};
+	class ambient_jet
+	{
+		name = "ambient_jet";
+		sound[] = {"\sound\ambient_jet.ogg", 1, 1};
+		titles[] = {1, ""};
+	};
+	class ambient_spike
+	{
+		name = "ambient_spike";
+		sound[] = {"\sound\ambient_spike.ogg", 1, 1};
+		titles[] = {1, ""};
+	};
+	class ambient_steps
+	{
+		name = "ambient_steps";
+		sound[] = {"\sound\ambient_steps.ogg", 1, 1};
+		titles[] = {1, ""};
+	};
+	class ambient_tehnic
+	{
+		name = "ambient_tehnic";
+		sound[] = {"\sound\ambient_tehnic.ogg", 1, 1};
+		titles[] = {1, ""};
+	};
+	class ambient_vuumm
+	{
+		name = "ambient_vuumm";
+		sound[] = {"\sound\ambient_vuumm.ogg", 1, 1};
+		titles[] = {1, ""};
+	};
+	class ambient_wind
+	{
+		name = "ambient_wind";
+		sound[] = {"\sound\ambient_wind.ogg", 1, 1};
+		titles[] = {1, ""};
+	};
+};
+class CfgRemoteExec // applies only to clients
+{
+	class Functions
+	{
+		#ifndef A3W_DEBUG
+		mode = 1; // 0 = block all, 1 = whitelist, 2 = allow all
+		#else
+		mode = 2; // debug mode, don't touch
+		#endif
+
+		#include "client\CfgRemoteExec_fnc.hpp"
+	};
+	class Commands
+	{
+		#ifndef A3W_DEBUG
+		mode = 1; // 0 = block all, 1 = whitelist, 2 = allow all
+		#else
+		mode = 2; // debug mode, don't touch
+		#endif
+	};
+};
