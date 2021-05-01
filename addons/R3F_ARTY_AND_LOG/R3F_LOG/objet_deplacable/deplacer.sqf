@@ -90,27 +90,9 @@ else
 				1 + (_corner1 max _corner2 max _corner3 max _corner4),
 				0.1 - (_objectMinBB select 2)
 			]];
-
-			/*if (count (weapons _objet) > 0) then
-			{
-				// Le canon doit pointer devant nous (sinon on a l'impression de se faire empaler)
-				_azimut_canon = ((_objet weaponDirection (weapons _objet select 0)) select 0) atan2 ((_objet weaponDirection (weapons _objet select 0)) select 1);
-
-				// On est obligé de demander au serveur de tourner le canon pour nous
-				R3F_ARTY_AND_LOG_PUBVAR_setDir = [_objet, (getDir _objet)-_azimut_canon];
-				if (isServer) then
-				{
-					["R3F_ARTY_AND_LOG_PUBVAR_setDir", R3F_ARTY_AND_LOG_PUBVAR_setDir] spawn R3F_ARTY_AND_LOG_FNCT_PUBVAR_setDir;
-				}
-				else
-				{
-					publicVariable "R3F_ARTY_AND_LOG_PUBVAR_setDir";
-				};
-			};*/
-
 			R3F_LOG_mutex_local_verrou = false;
 			R3F_LOG_force_horizontally = false;
-
+			player globalChat"use the R Button for Move up and the T button for Move down the object";
 			_action_menu_release_relative = player addAction [("<img image='client\icons\r3f_release.paa' color='#06ef00'/> <t color='#06ef00'>" + STR_R3F_LOG_action_relacher_objet + "</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\objet_deplacable\relacher.sqf", false, 5.5, true, true];
 			_action_menu_release_horizontal = player addAction [("<img image='client\icons\r3f_releaseh.paa' color='#06ef00'/> <t color='#06ef00'>" + STR_RELEASE_HORIZONTAL + "</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\objet_deplacable\relacher.sqf", true, 5.5, true, true];
 			_action_menu_45 = player addAction [("<img image='client\icons\r3f_rotate.paa' color='#06ef00'/> <t color='#06ef00'>Rotate object 45°</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\objet_deplacable\rotate.sqf", 45, 5.5, true, false];

@@ -1,8 +1,8 @@
- 
-// * This project is licensed under the GNU Affero GPL v3. Copyright © 2016 A3Wasteland.com *
- 
+// ******************************************************************************************
+// * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
+// ******************************************************************************************
 //	@file Name: territories.sqf
-//	@file Author: AgentRev
+//	@file Author: AgentRev, Bewilderbeest
 
 // Territory system definitions. See territory/README.md for more details.
 //
@@ -12,34 +12,24 @@
 // 4 - Territory category, currently unused. See territory/README.md for details.
 
 [
-	["TERRITORY_BALAVU_TRANSMITTER", "Tobakoro North", 500, "TRANSMITTER"],
-	["TERRITORY_BLUE_PEARL", "Bua Bua Mountain", 500, "INDUSTRIAL"],
-	["TERRITORY_COMMS_WHISKEY", "Center Mountain", 500, "TRANSMITTER"],
-	["TERRITORY_KATKOULA_DEPOT", "West Mountain", 500, "INDUSTRIAL"],
-	["TERRITORY_LAIKORO_DEPOT", "Lijnhaven Field", 500, "INDUSTRIAL"],
-	["TERRITORY_LIFOU_TRANSMITTER", "Lösi South Mountain", 500, "TRANSMITTER"],
-	//["TERRITORY_LIJNHAVEN_AIRSTRIP", "Lijnhaven Airstrip", 500, "AIRFIELD"],
-	["TERRITORY_LIJNHAVEN_FORTRESS", "Lijnhaven Fortress", 500, "RUINS"],
-	["TERRITORY_LILO_POWER", "Hacourt Field", 500, "POWER"],
-	["TERRITORY_LUGANVILLE_TRANSMITTER", "East Coast", 500, "TRANSMITTER"],
-	["TERRITORY_MONT_TANOA", "South Island", 500, "TRANSMITTER"],
-	["TERRITORY_RED_SPRING", "Red Tagatown", 500, "INDUSTRIAL"],
-	["TERRITORY_REGINA_RAILYARD", "Southwest Coast", 500, "INDUSTRIAL"],
-	["TERRITORY_ROCHELLE_AERODROME", "Northeast Mountain", 500, "AIRFIELD"],
-	["TERRITORY_ROCHELLE_RAILYARD", "SG Airstrip Field", 500, "INDUSTRIAL"],
-	["TERRITORY_SE_LUMBERYARD", "Forest clearing", 500, "INDUSTRIAL"],
-	["TERRITORY_SE_TRANSMITTER", "Center Radar", 500, "TRANSMITTER"],
-	["TERRITORY_STJULIEN_RAILYARD", "Southwest Field", 500, "INDUSTRIAL"],
-	["TERRITORY_SW_TRANSMITTER", "Southwest Transmitter", 500, "TRANSMITTER"],
-	["TERRITORY_TANOA_AIRPORT_NORTH", "Lösi Southwest Mountain", 750, "AIRFIELD"],
-	["TERRITORY_TANOA_AIRPORT_SOUTH", "South Coast", 750, "AIRFIELD"],
-	["TERRITORY_TANOA_AIRPORT_TERMINAL", "Port-Boisé Mountain", 750, "AIRFIELD"],
-	["TERRITORY_TANOUKA_REFINERY", "Moddergat Field", 500, "INDUSTRIAL"],
-	["TERRITORY_TANOUKA_TRANSMITTER", "Saiko Mountain", 500, "TRANSMITTER"],
-	["TERRITORY_TEMPLE_RUINS", "Small North Island", 500, "RUINS"],
-	["TERRITORY_TUVANAKA_AIRBASE", "Center Mountain", 500, "AIRFIELD"],
-	["TERRITORY_TUVANAKA_GSM", "Northwest Island", 500, "TRANSMITTER"],
-	["TERRITORY_YANUKKA_AIRSTRIP", "East Coast", 500, "AIRFIELD"]
+	["TERRITORY_AIRCRAFT_CARRIER", "Aircraft Carrier", 2500, "AIRBASE"],
+	["TERRITORY_AIRPORT_NORTH", "Malden Airport (North)", 1000, "AIRBASE"],
+	["TERRITORY_AIRPORT_SOUTH", "Malden Airport (South)", 1000, "AIRBASE"],
+	["TERRITORY_AIRPORT_TERMINAL", "Malden Airport (Terminal)", 1000, "AIRBASE"],
+	["TERRITORY_CANCON_PENINSULA", "Cancon Peninsula Outpost", 500, "TOWN"],
+	["TERRITORY_BUNKER", "Feas Bunker", 1000, "MILITARY"],
+	["TERRITORY_COVE", "Vigny Cove", 1000, "TOWN"],
+	["TERRITORY_MANSION", "Blanches Estate", 1000, "TOWN"],
+	["TERRITORY_MILITARY_BASE", "Military Base", 1000, "MILITARY"],
+	["TERRITORY_OLD_MILITARY_BASE_EAST", "Old Military Base (East)", 1250, "MILITARY"],
+	["TERRITORY_OLD_MILITARY_BASE_WEST", "Old Military Base (West)", 1250, "MILITARY"],
+	["TERRITORY_SUBSTATION", "La Pessange Substation", 500, "TOWN"],
+	["TERRITORY_CONSTRUCTION", "La Riviere Construction Site", 500, "TOWN"],
+	["TERRITORY_CHAPEL", "La Pessange Chapel", 500, "TOWN"],
+	["TERRITORY_AID_STATION", "United Nations Aid Station", 1000, "MILITARY"],
+	["TERRITORY_GAS_STATION", "Mont Chauve Gas Station", 500, "TOWN"],
+	["TERRITORY_UN_OUTPOST", "United Nations Outpost", 1000, "MILITARY"],
+	["TERRITORY_UN_COMMAND", "United Nations Command Post", 1000, "MILITARY"],
+	["TERRITORY_PEGASUS_AIRFIELD", "Pegasus Airfield", 1000, "AIRBASE"],
+	["TERRITORY_FORTRESS_ISLAND", "Fortress Island", 5000, "MILITARY"]
 ]
-
-//copyToClipboard str ((allMapMarkers select {_x select [0,10] == "TERRITORY_"}) apply {[_x, markerText _x, 500, ""]})

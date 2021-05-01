@@ -33,7 +33,7 @@ class A3W_fnc_logMemAnomaly { allowedTargets = 2; };
 class A3W_fnc_playerRespawnServer { allowedTargets = 2; };
 class A3W_fnc_processTransaction { allowedTargets = 2; };
 //choco function to server
-class Choco_fnc_dropSupply { allowedTargets = 2; };
+
 class A3W_fnc_pushVehicle {};
 //class A3W_fnc_registerKillScore { allowedTargets = 2; }; // only needed for injury kill points, not currently enabled due to point farming concerns
 class A3W_fnc_requestPlayerData { allowedTargets = 2; };

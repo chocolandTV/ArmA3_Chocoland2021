@@ -1,6 +1,6 @@
- 
+// ******************************************************************************************
 // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
- 
+// ******************************************************************************************
 //------------------------------------------//
 // Parameters - Feel free to edit these
 //------------------------------------------//
@@ -9,7 +9,7 @@
 #define SCRIPT_VERSION "1.5"
 
 // Set to true if you want to completely disable the revive system
-#define FAR_DisableRevive true
+#define FAR_DisableRevive false
 
 // Seconds until unconscious unit bleeds out and dies. Set to 0 to disable.
 #define FAR_BleedOut ((["A3W_bleedingTime", 60] call getPublicVar) max 10)

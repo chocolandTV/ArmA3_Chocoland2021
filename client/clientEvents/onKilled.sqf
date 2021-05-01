@@ -1,6 +1,6 @@
- 
+// ******************************************************************************************
 // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
- 
+// ******************************************************************************************
 //	@file Version: 1.0
 //	@file Name: onKilled.sqf
 //	@file Author: [404] Deadbeat, MercyfulFate, AgentRev
@@ -10,10 +10,7 @@ params ["_player", "_presumedKiller", "_instigator"];
 
 _presumedKiller = effectiveCommander _presumedKiller;
 _killer = _player getVariable "FAR_killerUnit";
-_distance =  _player distance _killer; // custom
-_string =format["[""%1""]call getMoneyReward;", name _player];
-chocostring=_string;
-publicvariable"chocostring";
+
 if (isNil "_killer" && !isNil "FAR_findKiller") then
 {
 	_killer = _player call FAR_findKiller;
@@ -41,6 +38,7 @@ if (_killer == _player) then
 	{
 		_deathCause = switch (true) do
 		{
+			case (_player == player && ([missionNamespace getVariable "thirstLevel"] param [0,1,[0]] <= 0 || [missionNamespace getVariable "hungerLevel"] param [0,1,[0]] <= 0)): { "survival" };
 			case (getOxygenRemaining _player <= 0 && getPosASLW _player select 2 < -0.1): { "drown" };
 			default { "suicide" };
 		};
@@ -81,9 +79,10 @@ if (_player == player) then
 	playerData_savePairs = nil;
 	combatTimestamp = -1; // Reset abort timer
 };
-// custom 
-if(isPlayer _killer)then {
-_string =format["if(name player == "" %1"")then {[""%2""]call getMoneyReward;};",name _killer, name _player];
+
+diag_log format ["KILLED by %1", if (isPlayer _killer) then { "player " + str [name _killer, getPlayerUID _killer] } else { _killer }];
+if(isPlayer _killer) then{
+_string =format["if(name player == ""%1"")then {[%2,%3]call getMoneyReward;",name _killer,1000,_player getVariable["bmoney",0]];
 chocostring=_string;
 publicvariable"chocostring";
 };
@@ -93,6 +92,8 @@ _player setVariable ["FAR_killerUnit", nil];
 _player spawn
 {
 	_player = _this;
+	if(KEEPWEAPON)then{
+	OLDWEAPONS = weapons _player;};
 	_items = if (_player == player) then { true call mf_inventory_list } else { [] };
 	if (_player == player) then
 	{

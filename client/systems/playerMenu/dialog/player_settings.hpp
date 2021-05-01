@@ -45,11 +45,16 @@ class playerSettings {
 
 		class waterIcon : w_RscPicture {
 			idc = -1;
-			text = "\A3\ui_f\data\igui\cfg\simpletasks\types\defend_ca.paa";
+			text = "\A3\ui_f\data\igui\cfg\simpletasks\types\container_ca.paa";
 			x = 0.022; y = 0.2;
 			w = 0.04 / (4/3); h = 0.04;
 		};
-
+		class waterIcon2 : w_RscPicture {
+			idc = -1;
+			text = "\A3\ui_f\data\igui\cfg\simpletasks\types\defend_ca.paa";
+			x = 0.022; y = 0.38;
+			w = 0.04 / (4/3); h = 0.04;
+		};
 		class foodIcon : w_RscPicture {
 			idc = -1;
 			text = "\a3\ui_f\data\map\vehicleicons\iconanimal_ca.paa";
@@ -88,13 +93,13 @@ class playerSettings {
 			w = 0.3; h = 0.05;
 		};
 
-		/*class distanceText : w_RscText {
+		class distanceText : w_RscText {
 			idc = view_range_text;
-			text = "View range:";
-			sizeEx = 0.025;
-			x = 0.03; y = 0.40;
-			w = 0.3; h = 0.02;
-		};*/
+			text = "";
+			sizeEx = 0.03;
+			x = 0.06; y = 0.372;
+			w = 0.3; h = 0.05;
+		};
 
 		class uptimeText : w_RscText {
 			idc = uptime_text;
@@ -205,5 +210,13 @@ class playerSettings {
 			x = 0.158; y = 0.57;
 			w = 0.125; h = 0.033 * safezoneH;
 		};
+		class btnKillfeed2 : w_RscButton {
+			idc = -1;
+			text = "Disable Infos";
+			onButtonClick = "NOINFO = true;";
+			x = 0.190; y = 0.57;
+			w = 0.125; h = 0.033 * safezoneH;
+		};
+		
 	};
 };

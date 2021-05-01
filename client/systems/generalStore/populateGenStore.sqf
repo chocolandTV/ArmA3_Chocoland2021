@@ -80,6 +80,12 @@ switch(_switch) do
 		_itemsArray = call genObjectsArray;
 		_showPicture = false;
 	};
+	case 7:
+	{
+		[missionNamespace, "market", ""] call BIS_fnc_getServerVariable;
+		_itemsArray = call compile market;
+		_showPicture = false;
+	};
 	default
 	{
 		_itemsArray = [];

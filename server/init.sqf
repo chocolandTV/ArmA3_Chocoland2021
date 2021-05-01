@@ -83,7 +83,7 @@ if (isServer) then
 	}];
 
 	//Execute Server Side Scripts.
-	call compile preprocessFileLineNumbers "server\antihack\setup.sqf";
+	
 	[] execVM "server\admins.sqf";
 };
 
@@ -291,7 +291,7 @@ if (_playerSavingOn || _objectSavingOn || _vehicleSavingOn || _mineSavingOn || _
 	{
 		_setupPlayerDB = [] spawn compile preprocessFileLineNumbers "persistence\server\players\setupPlayerDB.sqf"; // scriptDone stays stuck on false when using execVM on Linux
 
-		// profileNamespace doesn't save antihack logs
+		
 		if (_savingMethod != "profile") then
 		{
 			_setupPlayerDB spawn
@@ -504,7 +504,7 @@ if (["A3W_serverSpawning"] call isConfigOn) then
 	};
 };
 [] execVM "server\choco\serverSpawn.sqf";
-[] execVM "server\choco\serverSupply.sqf";
+[] execVM "server\choco\startMaldenStorm.sqf";
 A3W_serverSpawningComplete = compileFinal "true";
 publicVariable "A3W_serverSpawningComplete";
 
@@ -542,3 +542,5 @@ if !(["A3W_hcObjCleanup"] call isConfigOn) then
 	// Start clean-up loop
 	execVM "server\WastelandServClean.sqf";
 };
+
+market= ["Bag Bunker (Small)","Land_BagBunker_Small_F", 2500, "object"];

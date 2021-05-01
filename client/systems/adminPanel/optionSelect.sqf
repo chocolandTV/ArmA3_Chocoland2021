@@ -99,8 +99,9 @@ if (_uid call isAdmin) then
 				case 10: //Show Server FPS
 				{hint format["Server FPS: %1",serverFPS];};
 				case 11: // Drop Supply
-				{closeDialog 0;
-					[getPlayerUID player, 10] call Choco_fnc_dropSupply;
+				{	closeDialog 0;
+					_pos = [[[position player,500]],[]] call BIS_fnc_randomPos;
+					["Land_HBarrierBig_F", _pos]call parachuteRandomSupply;
 				};
 			};
 		};

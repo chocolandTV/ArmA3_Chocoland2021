@@ -24,9 +24,9 @@ player createDiaryRecord ["changelog",
 <br/>[Added] Parastore
 <br/>[Added] Server Spawing
 <br/>[Added] Paradrops
-<br/>[Added] A3Wasteland Mod
-<br/>[Fixed] Multiplayer performance
-<br/>[Fixed] Other minor changes and fixes
+<br/>[Added] progression system
+<br/>[Fixed] basebuilding and Animals
+<br/>[Fixed] A3Wasteland Mod
 "
 ]];
 

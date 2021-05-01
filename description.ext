@@ -9,8 +9,8 @@ forceRotorLibSimulation = 0; // if you set this to 1, you deny freedom of choice
 weaponPool = 0;
 unsafeCVL = 1; // required for store selling bins and private storage
 corpseManagerMode = 1;
-corpseRemovalMinTime = 30*60;
-corpseRemovalMaxTime = 30*60;
+corpseRemovalMinTime = 5*60;
+corpseRemovalMaxTime = 5*60;
 wreckManagerMode = 1;
 wreckRemovalMinTime = 5*60;
 wreckRemovalMaxTime = 10*60;
@@ -19,13 +19,13 @@ respawnDialog = 0; // do not enable this, otherwise the default scoreboard will 
 onPauseScript = "client\clientEvents\onPause.sqf";
 class Header
 {
-	gameType=Sandbox;
+	gameType=RPG;
 	minPlayers=1;
-	maxPlayers=146; // 144 players, 2 headless clients
+	maxPlayers=194; // 144 players, 2 headless clients
 };
 author="Choco + A3Wasteland";
-onLoadName = "arma3.Chocoland.tv 3in1- Fun Server |  A3Wasteland"; 
-onLoadMission = "3in1 : Basebuilding -Battle Royale and Hide and Seek | Persistent | Parastore | 100.000€ start";
+onLoadName = "arma3.Chocoland.tv |  A3Wasteland"; 
+onLoadMission = "3in1 : Basebuilding -Battle Royale and Hide and Seek | Persistent | Parastore";
 overviewText = "Chocoland is a fun map where you have 3 Elements in 1 - Battle - Basebuilding and Hide and Seek, choose your way with our new progression system";
 overviewTextLocked = "Chocoland is a fun map where you have 3 Elements in 1 - Battle - Basebuilding and Hide and Seek, choose your way with our new progression system";
 overviewPicture = "mapConfig\Loading.paa";
@@ -114,86 +114,42 @@ class CfgNotifications
 
 class CfgSounds
 {
-	sounds[] = {};
-	#include "client\CfgSounds.hpp"
-	class earthquake_03
+	class uragan_1
 	{
-		name = "earthquake_03";
-		sound[] = {"\sound\earthquake_03.ogg",0.7,1};
+		name = "uragan_1";
+		sound[] = {"\sound\uragan_1.ogg", db+5, 1};
 		titles[] = {1, ""};
 	};
-	class earthquake_02
+	class bcg_wind
 	{
-		name = "earthquake_02";
-		sound[] = {"\sound\earthquake_02.ogg",0.7, 1};
+		name = "bcg_wind";
+		sound[] = {"\sound\bcg_wind.ogg", db+5, 1};
+		titles[] = {1, ""};
+	};	
+	class rafala_1
+	{
+		name = "rafala_1";
+		sound[] = {"\sound\rafala_1.ogg", db+10, 1};
+		titles[] = {1, ""};
+	};	
+	class rafala_4_dr
+	{
+		name = "rafala_4_dr";
+		sound[] = {"\sound\rafala_4_dr.ogg", db+1, 1};
+		titles[] = {1, ""};
+	};	
+	class rafala_5_st
+	{
+		name = "rafala_5_st";
+		sound[] = {"\sound\rafala_5_st.ogg", db+1, 1};
 		titles[] = {1, ""};
 	};
-	class ambient_com
+	class sandstorm
 	{
-		name = "ambient_com";
-		sound[] = {"\sound\ambient_com.ogg", 1, 1};
+		name = "sandstorm";
+		sound[] = {"\sound\sandstorm.ogg", db+10, 1};
 		titles[] = {1, ""};
-	};
-	class ambient_fantoma
-	{
-		name = "ambient_fantoma";
-		sound[] = {"\sound\ambient_fantoma.ogg", 1, 1};
-		titles[] = {1, ""};
-	};
-	class ambient_fundal
-	{
-		name = "ambient_fundal";
-		sound[] = {"\sound\ambient_fundal.ogg", 1, 1};
-		titles[] = {1, ""};
-	};
-	class ambient_hall
-	{
-		name = "ambient_hall";
-		sound[] = {"\sound\ambient_hall.ogg", 1, 1};
-		titles[] = {1, ""};
-	};
-	class ambient_industrial
-	{
-		name = "ambient_industrial";
-		sound[] = {"\sound\ambient_industrial.ogg", 1, 1};
-		titles[] = {1, ""};
-	};
-	class ambient_jet
-	{
-		name = "ambient_jet";
-		sound[] = {"\sound\ambient_jet.ogg", 1, 1};
-		titles[] = {1, ""};
-	};
-	class ambient_spike
-	{
-		name = "ambient_spike";
-		sound[] = {"\sound\ambient_spike.ogg", 1, 1};
-		titles[] = {1, ""};
-	};
-	class ambient_steps
-	{
-		name = "ambient_steps";
-		sound[] = {"\sound\ambient_steps.ogg", 1, 1};
-		titles[] = {1, ""};
-	};
-	class ambient_tehnic
-	{
-		name = "ambient_tehnic";
-		sound[] = {"\sound\ambient_tehnic.ogg", 1, 1};
-		titles[] = {1, ""};
-	};
-	class ambient_vuumm
-	{
-		name = "ambient_vuumm";
-		sound[] = {"\sound\ambient_vuumm.ogg", 1, 1};
-		titles[] = {1, ""};
-	};
-	class ambient_wind
-	{
-		name = "ambient_wind";
-		sound[] = {"\sound\ambient_wind.ogg", 1, 1};
-		titles[] = {1, ""};
-	};
+	};		
 };
 class CfgRemoteExec // applies only to clients
 {

@@ -1,28 +1,31 @@
- 
-// * This project is licensed under the GNU Affero GPL v3. Copyright © 2016 A3Wasteland.com *
- 
+// ******************************************************************************************
+// * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
+// ******************************************************************************************
 //	@file Name: towns.sqf
-//	@file Author: AgentRev
+//	@file Author: AgentRev, JoSchaap
 
 private _towns =
 [
-["Town_Doodstil", -1, "Doodstil"],
-["Town_Harcourt", -1, "Harcourt"],
-["Town_Lijnhaven", -1, "Lijnhaven"],
-["Town_Baai", -1, "Vliegende Hollander Baai"],
-["Town_Blerick", -1, "Blerick"],
-["Town_BuaBua", -1, "Bua Bua"],
-["Town_ChocoCity", -1, "ChocoCity"],
-["Town_LaFoa", -1, "La Foa"],
-["Town_Losi", -1, "Lösi"],
-["Town_Orange", -1, "Orange"],
-["Town_Port-Boise", -1, "Port-Boisé"],
-["Town_Rereki", -1, "Rereki"],
-["Town_Saioko", -1, "Saioko"],
-["Town_SouthLijnhaven", -1, "South Lijnhaven"],
-["Town_Taga", -1, "Taga"],
-["Town_Tobakoro", -1, "Tobakoro"],
-["Town_Moddergat", -1, "Moddergat"]
+	["Town_Port", -1, "Le Port"],
+	["Town_PortWest", -1, "West Le Port"],
+	["Town_PortNorth", -1, "North Le Port"],
+	["Town_Chapoi", -1, "Chapoi"],
+	["Town_Cancon", -1, "Cancon"],
+	["Town_Houdan", -1, "Houdan"],
+	["Town_Riviere", -1, "La Riviere"],
+	["Town_Faro", -1, "Faro"],
+	["Town_Arette", -1, "Arette"],
+	["Town_SteMarie", -1, "Sainte Marie"],
+	["Town_Pessagne", -1, "La Pessagne"],
+	["Town_Arudy", -1, "Arudy"],
+	["Town_Vigny", -1, "Vigny"],
+	["Town_Goisse", -1, "Goisse"], 
+	["Town_Dourdan", -1, "Dourdan"],
+	["Town_Trinite", -1, "La Trinite"],
+	["Town_StLouis", -1, "Saint Louis"],
+	["Town_Larche", -1, "Larche"],
+	["Town_Lolisse", -1, "Lolisse"],
+	["Town_StJean", -1, "Saint Jean"]
 ];
 
 //copyToClipboard str ((allMapMarkers select {_x select [0,5] == "Town_"}) apply {[_x, -1, markerText _x]})

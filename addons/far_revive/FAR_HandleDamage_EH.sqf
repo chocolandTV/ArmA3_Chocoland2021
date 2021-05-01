@@ -1,6 +1,6 @@
- 
+// ******************************************************************************************
 // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
- 
+// ******************************************************************************************
 //	@file Name: FAR_HandleDamage_EH.sqf
 //	@file Author: Farooq, AgentRev
 
@@ -45,7 +45,8 @@ if (UNCONSCIOUS(_unit) && !_skipRevive) then
 {
 	if (!_reviveReady) exitWith { _damage = 0.5 }; // block additional damage while transitioning to revive mode; allowDamage false prevents proper tracking of lethal headshots
 
-	
+	//if (_selection != "?") then
+	//{
 		_oldDamage = if (_selection == "") then { damage _unit } else { _unit getHit _selection };
 
 		if (!isNil "_oldDamage") then
@@ -58,7 +59,7 @@ if (UNCONSCIOUS(_unit) && !_skipRevive) then
 
 			_damage = ((_damage - _oldDamage) * (FAR_DamageMultiplier min 0.1)) min 0.2 + _oldDamage; // max damage inflicted per hit is capped (via min 0.2) to prevent insta-bleedout - 0.2 is 40% of 0.5
 		};
-	
+	//};
 
 	true call _setKillerInfo;
 }
@@ -98,5 +99,21 @@ else
 	};
 };
 
+/*if (UNCONSCIOUS(_unit) && !_reviveReady) then
+{
+	_headshotQueue = _unit getVariable "FAR_headshotHitPartEH_queued";
+
+	if (!isNil "_headshotQueue") then
+	{
+		_headshotQueue params [["_time",0], ["_hitPart",[]]];
+
+		if (time - _time < 0.25) then
+		{
+			_hitPart call FAR_headshotHitPartEH;
+		};
+
+		_unit setVariable ["FAR_headshotHitPartEH_queued", nil];
+	};
+};*/
 
 //_damage

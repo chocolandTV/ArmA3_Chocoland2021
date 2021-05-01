@@ -111,10 +111,38 @@ requestStoreObject = "client\functions\requestStoreObject.sqf" call mf_compile;
 vehicleInfo = "client\systems\vehicleStore\vehicleInfo.sqf" call mf_compile;
 weaponInfo = "client\systems\gunStore\weaponInfo.sqf" call mf_compile;
 // choco
+createLootBox = "client\choco\createLootBox.sqf" call mf_compile;
+createBasecore = "client\choco\baseCore.sqf" call mf_compile;
+
+becomeAnimal = "client\choco\becomeAnimal.sqf" call mf_compile;
+parachuteRandomSupply ="client\choco\spawnRandomSupply.sqf" call mf_compile;
+
+getSupplyItem = "client\choco\getSupplyItem.sqf" call mf_compile;
 getMoneyReward ="client\functions\moneyReward.sqf" call mf_compile;
-startRadiation = "client\choco\radiation.sqf" call mf_compile;
-radiationEffectStart = "AL_post\alias_postapocaliptyc.sqf" call mf_compile;
+
+requestStoreMulti = "client\functions\requestStoreMulti.sqf" call mf_compile;
+// progression 
+a_unlock1 = "client\choco\unlock\a_unlock1_swimming.sqf" call mf_compile;
+a_unlock2 = "client\choco\unlock\a_unlock2_bitePlayer.sqf" call mf_compile;
+a_unlock3 = "client\choco\unlock\a_unlock3_plantBomb.sqf" call mf_compile;
+a_unlock4 = "client\choco\unlock\a_unlock4_seagull.sqf" call mf_compile;
+a_unlock5 = "client\choco\unlock\a_unlock5_flyMode.sqf" call mf_compile;
+
+b_unlock1 = "client\choco\unlock\b_unlock1_keepWeapon.sqf" call mf_compile;
+b_unlock2 = "client\choco\unlock\b_unlock2_smartAmmo.sqf" call mf_compile;
+b_unlock3 = "client\choco\unlock\b_unlock3_satelliteCam.sqf" call mf_compile;
+b_unlock4 = "client\choco\unlock\b_unlock4_attachMenu.sqf" call mf_compile;
+b_unlock5 = "client\choco\unlock\b_unlock5_infiniteAmmo.sqf" call mf_compile;
+
+c_unlock1 = "client\choco\unlock\c_unlock1_baseCore.sqf" call mf_compile;
+c_unlock2 = "client\choco\unlock\c_unlock2_multiBuy.sqf" call mf_compile;
+c_unlock3 = "client\choco\unlock\c_unlock3_auto-Flak.sqf" call mf_compile;
+c_unlock4 = "client\choco\unlock\c_unlock4_1ClickBase.sqf" call mf_compile;
+c_unlock5 = "client\choco\unlock\c_unlock5_invisible.sqf" call mf_compile;
+
+
 createBasecoreMarker = "client\choco\basecoreMarker.sqf" call mf_compile;
+
 if (isNil "A3W_fnc_MP") then { A3W_fnc_MP = compile preprocessFileLineNumbers "\A3\functions_f\MP\fn_MP.sqf" };
 if (isNil "A3W_fnc_MPexec") then { A3W_fnc_MPexec = compile preprocessFileLineNumbers "\A3\functions_f\MP\fn_MPexec.sqf" };
 

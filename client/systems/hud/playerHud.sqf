@@ -145,7 +145,7 @@ while {true} do
 	//custom Chocostats im HUD
 		_strArray pushBack format ["%1 <img size='0.7' image='\A3\ui_f\data\igui\cfg\cursors\leader_ca.paa'/>", [player getVariable ["bmoney", 0]] call fn_numbersText];
 		//bountyPerk
-		_strArray pushBack format ["%1 <img size='0.7' image='\A3\ui_f\data\igui\cfg\simpletasks\types\defend_ca.paa'/>",[player getVariable ["basebuilder", 0]] call fn_numbersText];
+		_strArray pushBack format ["%1 <img size='0.7' image='\A3\ui_f\data\igui\cfg\simpletasks\types\container_ca.paa'/>",[player getVariable ["basebuilder", 0]] call fn_numbersText];
 		//Basebuilder 
 		_strArray pushBack format ["%1 <img size='0.7' image='\a3\ui_f\data\map\vehicleicons\iconanimal_ca.paa'/>", [player getVariable ["animalpoints", 0]] call fn_numbersText];
 	//animal

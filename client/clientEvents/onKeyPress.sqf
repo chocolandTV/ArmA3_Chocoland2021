@@ -22,6 +22,11 @@ _handled = false;
 // keycodes are defined in client\clientEvents\customKeys.sqf
 switch (true) do
 {
+	// F3 SmartAmmo When SMARTAMMO
+	case (_key in Choco_customKeys_SmartAmmo):
+	{
+	if(SMARTAMMO)then{	call b_unlock2;	};
+	};
 	//F5 key
 	case (_key in Choco_customKeys_Parastore):
 	{ 
@@ -61,11 +66,25 @@ switch (true) do
 			["You've taken out your earplugs.", 5] call mf_notify_client;
 		};
 	};
+
+	//move object Up while moving
+	case(_key in Choco_customKeys_MoveUP):
+	{
+	if(!isNil"R3F_LOG_joueur_deplace_objet")then{ 
+	atthfix = atthfix+0.2;R3F_LOG_joueur_deplace_objet attachTo [player, [ 0, (((boundingBox R3F_LOG_joueur_deplace_objet select 1 select 1) max (-(boundingBox R3F_LOG_joueur_deplace_objet select 0 select 1))) max ((boundingBox R3F_LOG_joueur_deplace_objet select 1 select 0) max (-(boundingBox R3F_LOG_joueur_deplace_objet select 0 select 0)))) + 1, atthfix]];};
+	};
+
+	//move object Down while moving
+	case(_key in Choco_customKeys_MoveDown):
+	{
+	if(!isNil"R3F_LOG_joueur_deplace_objet")then{ 
+	atthfix = atthfix-0.2;R3F_LOG_joueur_deplace_objet attachTo [player, [ 0, (((boundingBox R3F_LOG_joueur_deplace_objet select 1 select 1) max (-(boundingBox R3F_LOG_joueur_deplace_objet select 0 select 1))) max ((boundingBox R3F_LOG_joueur_deplace_objet select 1 select 0) max (-(boundingBox R3F_LOG_joueur_deplace_objet select 0 select 0)))) + 1,atthfix]];};
+	};
 };
 
 // ********** Action keys **********
 
-if (!UNCONSCIOUS) then // ####################
+if (!UNCONSCIOUS) then
 {
 
 // Parachute
@@ -127,20 +146,6 @@ if (!_handled && _key in (actionKeys "MoveDown" + actionKeys "MoveUp")) then
 	};
 };
 
-} // ####################
-else // UNCONSCIOUS
-{
-	if (_key == 57) then // spacebar
-	{
-		execVM "client\functions\confirmSuicide.sqf";
-		_handled = true;
-	};
-
-	if (_key == 14) then // backspace
-	{
-		execVM "addons\far_revive\FAR_lastResort.sqf";
-		_handled = true;
-	};
 };
 
 // Scoreboard

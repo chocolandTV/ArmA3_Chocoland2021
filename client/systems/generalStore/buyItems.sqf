@@ -269,9 +269,15 @@ storePurchaseHandle = _this spawn
 				
 				//_requestKey = call A3W_fnc_generateKey;
 				playSound "FD_Finish_F";
-				closeDialog 0;
+			
+				player setVariable["basebuilder", (player getVariable["basebuilder",0]) + 1,true];
+				if(!MULTIBUY)then {	
 				hint format ["your Object has been spawned in the Air."];
-				[(_x select 1),_price,"object"] call requestStoreObject;};
+				closeDialog 0;
+				[(_x select 1),_price,"object"] call requestStoreObject;}else
+				{
+					[(_x select 1),_price,"object"] call requestStoreMulti;};
+				};
 			
 		} forEach (call genObjectsArray);
 	};
@@ -289,17 +295,11 @@ storePurchaseHandle = _this spawn
 					[_itemText] call _showInsufficientFundsError;
 				};
 
-				if !(_itemData call mf_inventory_is_full) then
+				if (_itemData == _x select 1) then
 				{
-					[_itemData, 1] call mf_inventory_add;
-				}
-				else
-				{
-					[_itemText] call _showInsufficientSpaceError;
+					[_itemData]call getSupplyItem;
 				};
 
-				//populate the inventory items
-				[] execVM "client\systems\generalStore\getInventory.sqf";
 			};
 		} forEach (call customPlayerItems);
 	};

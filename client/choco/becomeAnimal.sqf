@@ -1,9 +1,15 @@
 private ["_skin","_type", "_ar", "_oldUnit", "_newUnit", "_dummyUnit", "_dummyGroup"];
-
-_skin=typeOf (_this select 0);
-if(isNil _skin)then { _skin = typeOf (_this select 1);};
+ClientSaveData={
+_var1 = player getVariable ["cmoney", 0];
+_var2 = player getVariable ["bmoney", 0];
+_var3 = player getVariable["basebuilder", 0];
+_var4 = player getVariable["animalpoints", 0];
+ saveData = [_var1,_var2,_var3,_var4];
+};
+_skin=(_this select 0);
 RESCUE= true;
 call fn_savePlayerData;
+call ClientSaveData;
 skinText = typeOf(player);
 _oldUnit = player;
 _type = _skin;
@@ -21,12 +27,16 @@ newUnit addScore (_ar select 3);
 
 sleep 0.3;
 
-    newUnit setVehicleInit format["this setVehicleVarName ""%1""; %1 = this;", _ar select 7];
+   _string= format[" newUnit setVehicleInit ""this setVehicleVarName ""%1"" ""; %1 = this;", _ar select 7];
+   compile _string;
     processInitCommands;
 
  [newUnit] join (_ar select 4);
 removeSwitchableUnit newUnit;
- 
+camera_loop_active = false;
+["A3W_camera_oneachFrame", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
+ camera_loop_active =  true;
+["A3W_camera_oneachFrame", "onEachFrame", camera_loop] call BIS_fnc_addStackedEventHandler;
 sleep 0.3;
   deleteVehicle  _dummyUnit;
  oldUnit =_oldUnit;
@@ -35,18 +45,18 @@ sleep 0.3;
 sleep 0.3;
  if (_ar select 6) then { (group newUnit) selectLeader newUnit};
 
-player addweapon "ItemMap";
-player addweapon "ItemCompass";
+newUnit addweapon "ItemMap";
+newUnit addweapon "ItemCompass";
 newUnit addweapon "ItemWatch";
-player addEventHandler ["Respawn", { _this spawn onRespawn }];
-player addEventHandler ["Killed", onKilled];
-//bombId = player addAction[('<t color=''#FF33CC''>' + ('Blew Up') +  '</t>'),'client\chocofunc\animalbomb.sqf'];
+newUnit addEventHandler ["Respawn", { _this spawn onRespawn }];
+newUnit addEventHandler ["Killed", onKilled];
+//bombId = newUnit addAction[('<t color=''#FF33CC''>' + ('Blew Up') +  '</t>'),'server\functions\animalBomb.sqf'];
 // add action Bite 10% dmg on player nearby
  walked =false;
 
-chocoland globalChat" Reserve to Player MouseWheel action will come in 30 seconds";
+newUnit globalChat" Reserve to Player MouseWheel action will come in 30 seconds";
 diag_log format ["Player %1 is an Animal %2", name player, _skin];
 //create Mission 
-[getpos player]execVM"client\choco\animalMission.sqf";
+[getpos (newUnit),_skin]execVM"client\choco\animalMission.sqf";
 
 sleep 30;revId = player addAction[('<t color=''#219eff''>' + ('Reverse to Player') +  '</t>'),'client\choco\reverseSkin.sqf'];

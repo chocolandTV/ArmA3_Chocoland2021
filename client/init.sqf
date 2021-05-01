@@ -60,16 +60,22 @@ A3W_scriptThreads pushBack execVM "client\functions\evalManagedActions.sqf";
 
 [player, objNull] remoteExec ["A3W_fnc_playerRespawnServer", 2];
 
-//Player setup
-player call playerSetupStart;
+
 
 // Starting
-player setVariable ["cmoney", 100000, true];
-[player, 100000, true] call A3W_fnc_setCMoney;
-player setVariable ["bmoney", 0,true];
-player setVariable["basebuilder", 0,true];
-player setVariable["animapoints", 0,true];
-
+player setVariable ["cmoney", 10000, true];
+[player, 10000, true] call A3W_fnc_setCMoney;
+player setVariable ["bmoney", 0,false];
+player setVariable["basebuilder", 0,false];
+player setVariable["animalpoints", 0,false];
+KEEPWEAPON =false;
+NOINFO=false;
+SMARTAMMO=false;
+BASECORE =false;
+MULTIBUY=false;
+ANIMALSWIMMING = false;
+//Player setup
+player call playerSetupStart;
 // Player saving - load data
 if (["A3W_playerSaving"] call isConfigOn) then
 {
@@ -97,7 +103,7 @@ if (isNil "playerData_alive") then
 };
 
 player call playerSetupEnd;
-diag_log format ["Player starting with €%1", (player getVariable ["cmoney", 0]) call fn_numToStr];
+diag_log format ["Player starting with %1", (player getVariable ["cmoney", 0]) call fn_numToStr];
 
 [] execVM "territory\client\hideDisabledTerritories.sqf";
 
@@ -135,8 +141,8 @@ A3W_scriptThreads pushBack execVM "addons\Lootspawner\LSclientScan.sqf";
 [] execVM "client\functions\drawPlayerIcons.sqf";
 [] execVM "addons\camera\functions.sqf";
 [] execVM "addons\UAV_Control\functions.sqf";
-//custom RADIATION 
-[] spawn startRadiation;
+//custom MaldenStorm 
+//[] spawn startMaldenStorm;
 
 call compile preprocessFileLineNumbers "client\functions\generateAtmArray.sqf";
 [] execVM "client\functions\drawPlayerMarkers.sqf";
@@ -155,3 +161,6 @@ inGameUISetEventHandler ["Action", "_this call A3W_fnc_inGameUIActionEvent"];
 } forEach pvar_spawn_beacons;
 [] execVM "client\choco\Motd.sqf";
 [] spawn createBasecoreMarker;
+[] execVM "client\choco\supplyController.sqf";
+[] execVM "client\choco\unlockController.sqf";
+

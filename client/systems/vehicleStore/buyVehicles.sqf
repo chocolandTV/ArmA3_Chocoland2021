@@ -152,8 +152,18 @@ storePurchaseHandle = _this spawn
 
 		_requestKey = call A3W_fnc_generateKey;
 		playSound "FD_Finish_F";
-		hint format ["your Vehicle has been spawned in the Air"];
-		[_class, _price, _colorData] call requestStoreObject;
+			
+			if(!MULTIBUY)then 
+			{	
+				
+				closeDialog 0;
+				[_class, _price, _colorData] call requestStoreObject;
+			}else
+				{
+					[_class, _price, _colorData] call requestStoreMulti;
+				};
+			};
+		
 		_vehicle = objectFromNetId (missionNamespace getVariable _requestKey);
 
 		

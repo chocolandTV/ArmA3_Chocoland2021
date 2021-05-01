@@ -31,8 +31,7 @@ while {true} do
 	while {isNil "_nextMission"} do
 	{
 		_availableMissions = [MISSION_CTRL_PVAR_LIST, { !(_x select 2) }] call BIS_fnc_conditionalSelect;
-		// _availableMissions = MISSION_CTRL_PVAR_LIST; // If you want to allow multiple missions of the same type running along, uncomment this line and comment the one above
-
+		
 		if (count _availableMissions > 0) then
 		{
 			_missionsList = _availableMissions call generateMissionWeights;
@@ -47,21 +46,7 @@ while {true} do
 	[MISSION_CTRL_PVAR_LIST, _nextMission, true] call setMissionState;
 
 	diag_log format ["WASTELAND SERVER - %1 Mission%2 waiting to run: %3", MISSION_CTRL_TYPE_NAME, _controllerSuffix, _nextMission];
-	/*
-	[
-		format
-		[
-			"<t color='%1' shadow='2' size='1.75'>%2 Objective%3</t><br/>" +
-			"<t color='%1'>------------------------------</t><br/>" +
-			"<t color='%4' size='1.0'>Starting in %5 minutes</t>",
-			MISSION_CTRL_COLOR_DEFINE,
-			MISSION_CTRL_TYPE_NAME,
-			_controllerSuffix,
-			subTextColor,
-			_missionDelay / 60
-		]
-	] call hintBroadcast;
-	*/
+	
 	uiSleep _missionDelay;
 
 	// these should be defined in the mission script

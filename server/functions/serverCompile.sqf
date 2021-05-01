@@ -95,3 +95,4 @@ randomWeapons = [_path, "randomWeapon.sqf"] call mf_compile;
 // staticGunCreation = [_path, "staticGunCreation.sqf"] call mf_compile;
 staticHeliCreation = [_path, "staticHeliCreation.sqf"] call mf_compile;
 vehicleCreation = [_path, "vehicleCreation.sqf"] call mf_compile;
+

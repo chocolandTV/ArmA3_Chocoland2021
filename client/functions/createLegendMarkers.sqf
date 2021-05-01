@@ -47,14 +47,3 @@ _legendTop = _legendMarginY + (_markerSpacing * (count _markers - 1));
 	_marker setMarkerShapeLocal "ICON";
 
 } forEach _markers;
-_name = "Georgetown Warning radioactiv";
-_objPos= [5760,10305,0];
-deleteMarker _marker;
-_marker = "objectSearchMapMarker" + ("Georgetown");
-_marker = createMarkerLocal [_marker,_objPos];
-_marker setMarkerTypeLocal "ellipse";
-_marker setMarkerShapeLocal "ELLIPSE";
-_marker setMarkerPosLocal _objPos;
-_marker setMarkerColorLocal "ColorRed";
-_marker setMarkerTextLocal _name;
-objectSearchMapMarkers pushBack _marker;

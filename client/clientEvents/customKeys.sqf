@@ -24,8 +24,10 @@ forEach
 	["A3W_customKeys_playerMenu", [41]], // 41 = Tilde (above Tab)
 	["A3W_customKeys_playerNames", [199,219,220]], // 199 = Home, 219 = LWin, 220 = RWin
 	["A3W_customKeys_earPlugs", [207]], // 207 = End
-	["Choco_customKeys_Parastore",[63]] //F5
-
+	["Choco_customKeys_Parastore",[63]], //F5
+	["Choco_customKeys_MoveUP",[19]], // object move up R
+	["Choco_customKeys_MoveDown",[20]], // object move down T
+	["Choco_customKeys_SmartAmmo",[61]] // F3 smartAmmo
 ];
 
 _voiceKeys = [];

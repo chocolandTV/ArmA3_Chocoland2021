@@ -206,6 +206,9 @@ else
 	call missionHint;
 
 	diag_log format ["WASTELAND SERVER - %1 Mission%2 complete: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
+	_string =format["[%1,%2]call getMoneyReward;",10000, 0];
+	chocostring=_string;
+	publicvariable"chocostring";
 };
 
 deleteGroup _aiGroup;

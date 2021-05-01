@@ -52,15 +52,13 @@ if (_uid call isAdmin) then
 			_objects = nearestObjects [position player, [_objectClass], OBJECT_SEARCH_RADIUS];
 
 			{
-				private ["_name","_objPos","_dist","_name","_str","_index","_marker","_object"];
-				_object = _x;
+				private ["_name","_objPos","_dist","_name","_str","_index","_marker"];
 				_name = gettext(configFile >> "CfgVehicles" >> (typeOf _x) >> "displayName");
 				_objPos = getPosATL _x;
 				_dist = floor(player distance _x);
 				_str = format["%1 %2m away at %3", _name, _dist, _objPos];
 				_index = _objectListBoxCtrl lbAdd _str;
-				_
-				_objectListBoxCtrl lbSetData [_index, str(_object)];
+				_objectListBoxCtrl lbSetData [_index, str(_objPos)];
 				//diag_log format["Setting data to %1", str(_objPos)];
 
 				_marker = "objectSearchMapMarker" + (str _forEachIndex);
@@ -82,10 +80,10 @@ if (_uid call isAdmin) then
 			_index = lbCurSel _objectListBoxCtrl;
 			_positionStr = _objectListBoxCtrl lbData _index;
 			// Convert the string back to the position array it was
-			_obj = call compile _positionStr;
-			diag_log format["_objPos is %1", getPosATL _obj];
+			_objPos = call compile _positionStr;
+			diag_log format["_objPos is %1", _objPos];
 			// Find us somewhere safe to spawn close by
-			_safePos = [(getPosATL _obj),2,20,0.2,0,1,0,[],[[0,0], [0,0]]] call BIS_fnc_findSafePos;
+			_safePos = [_objPos,2,20,0.2,0,1,0,[],[[0,0], [0,0]]] call BIS_fnc_findSafePos;
 			if (_safePos select 0 == 0 and _safePos select 1 == 0) exitWith {
 				// fsp is shit
 				player globalChat "BIS_fnc_findSafePos failed";
@@ -109,10 +107,12 @@ if (_uid call isAdmin) then
 		};
 		case OBJECT_SEARCH_ACTION_DELETE:
 		{
+		private ["_index", "_positionStr", "_objPos", "_nearestObjects"];
 			_index = lbCurSel _objectListBoxCtrl;
 			_positionStr = _objectListBoxCtrl lbData _index;
-			_obj = call compile _positionStr;
-			deleteVehicle _obj;
+			_objPos = call compile _positionStr;
+			_near = nearestObjects [_objPos, ["ALL"], 3];
+			{deleteVehicle _x}forEach _near;
 		};
 	};
 };
