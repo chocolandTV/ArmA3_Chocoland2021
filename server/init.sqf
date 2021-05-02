@@ -543,4 +543,4 @@ if !(["A3W_hcObjCleanup"] call isConfigOn) then
 	execVM "server\WastelandServClean.sqf";
 };
 
-market= ["Bag Bunker (Small)","Land_BagBunker_Small_F", 2500, "object"];
+//market= ["Bag Bunker (Small)","Land_BagBunker_Small_F", 2500, "object"];

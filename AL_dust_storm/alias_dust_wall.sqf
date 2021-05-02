@@ -1,6 +1,5 @@
 // by ALIAS
 // Tutorial: https://www.youtube.com/user/aliascartoons
-// [[[],"AL_storm\alias_dust_wall.sqf"],"BIS_fnc_execVM",true,true] spawn BIS_fnc_MP;
 
 private ["_sursa_storm","_fum_negru","_x_dev","_y_dev"];
 

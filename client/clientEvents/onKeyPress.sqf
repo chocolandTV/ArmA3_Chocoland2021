@@ -1,11 +1,8 @@
- 
 // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
- 
-//	@file Version: 1.0
+
 //	@file Name: onKeyPress.sqf
 //	@file Author: [404] Deadbeat, [404] Costlyy, AgentRev
-//	@file Created: 20/11/2012 05:19
-//	@file Args:
+
 
 #define UNCONSCIOUS (player call A3W_fnc_isUnconscious)
 
@@ -32,7 +29,19 @@ switch (true) do
 	{ 
 		execVM "client\systems\generalStore\loadGenStore.sqf";
 	};
+	//move object Up while moving
+	case(_key in Choco_customKeys_MoveUP):
+	{
+	if(!isNil"R3F_LOG_joueur_deplace_objet")then{ 
+	atthfix = atthfix+0.2;R3F_LOG_joueur_deplace_objet attachTo [player, [ 0, (((boundingBox R3F_LOG_joueur_deplace_objet select 1 select 1) max (-(boundingBox R3F_LOG_joueur_deplace_objet select 0 select 1))) max ((boundingBox R3F_LOG_joueur_deplace_objet select 1 select 0) max (-(boundingBox R3F_LOG_joueur_deplace_objet select 0 select 0)))) + 1, atthfix]];};
+	};
 
+	//move object Down while moving
+	case(_key in Choco_customKeys_MoveDown):
+	{
+	if(!isNil"R3F_LOG_joueur_deplace_objet")then{ 
+	atthfix = atthfix-0.2;R3F_LOG_joueur_deplace_objet attachTo [player, [ 0, (((boundingBox R3F_LOG_joueur_deplace_objet select 1 select 1) max (-(boundingBox R3F_LOG_joueur_deplace_objet select 0 select 1))) max ((boundingBox R3F_LOG_joueur_deplace_objet select 1 select 0) max (-(boundingBox R3F_LOG_joueur_deplace_objet select 0 select 0)))) + 1,atthfix]];};
+	};
 	// U key
 	case (_key in A3W_customKeys_adminMenu):
 	{
@@ -66,25 +75,11 @@ switch (true) do
 			["You've taken out your earplugs.", 5] call mf_notify_client;
 		};
 	};
-
-	//move object Up while moving
-	case(_key in Choco_customKeys_MoveUP):
-	{
-	if(!isNil"R3F_LOG_joueur_deplace_objet")then{ 
-	atthfix = atthfix+0.2;R3F_LOG_joueur_deplace_objet attachTo [player, [ 0, (((boundingBox R3F_LOG_joueur_deplace_objet select 1 select 1) max (-(boundingBox R3F_LOG_joueur_deplace_objet select 0 select 1))) max ((boundingBox R3F_LOG_joueur_deplace_objet select 1 select 0) max (-(boundingBox R3F_LOG_joueur_deplace_objet select 0 select 0)))) + 1, atthfix]];};
-	};
-
-	//move object Down while moving
-	case(_key in Choco_customKeys_MoveDown):
-	{
-	if(!isNil"R3F_LOG_joueur_deplace_objet")then{ 
-	atthfix = atthfix-0.2;R3F_LOG_joueur_deplace_objet attachTo [player, [ 0, (((boundingBox R3F_LOG_joueur_deplace_objet select 1 select 1) max (-(boundingBox R3F_LOG_joueur_deplace_objet select 0 select 1))) max ((boundingBox R3F_LOG_joueur_deplace_objet select 1 select 0) max (-(boundingBox R3F_LOG_joueur_deplace_objet select 0 select 0)))) + 1,atthfix]];};
-	};
 };
 
 // ********** Action keys **********
 
-if (!UNCONSCIOUS) then
+if (!UNCONSCIOUS) then // ####################
 {
 
 // Parachute
@@ -146,6 +141,20 @@ if (!_handled && _key in (actionKeys "MoveDown" + actionKeys "MoveUp")) then
 	};
 };
 
+} // ####################
+else // UNCONSCIOUS
+{
+	if (_key == 57) then // spacebar
+	{
+		execVM "client\functions\confirmSuicide.sqf";
+		_handled = true;
+	};
+
+	if (_key == 14) then // backspace
+	{
+		execVM "addons\far_revive\FAR_lastResort.sqf";
+		_handled = true;
+	};
 };
 
 // Scoreboard

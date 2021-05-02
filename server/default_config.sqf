@@ -1,12 +1,6 @@
  
 // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
  
-// A3Wasteland config file
-// You will need to shutdown the server to edit settings in this file!
-// All saving is done via the server's profileNamespace by default; iniDBI will be automatically used if you have if installed
-// if you have any doubts and/or questions about the mission find us at a3wasteland.com
-// This file is overriden by the external file "A3Wasteland_settings\main_config.sqf" if present
-
 // General settings
 A3W_teamPlayersMap = 1;            // Show all friendly players on the map at all times, regardless of difficulty level (0 = no, 1 = yes)
 A3W_disableGlobalVoice = 1;        // Auto-switch channel to Direct communication whenever broadcasting voice on global, unless being admin (0 = no, 1 = yes)
@@ -118,13 +112,6 @@ A3W_hcObjCleanup = 0;              // Enable headless client server cleanup (0 =
 A3W_hcObjCleanupID = 1;            // ID of the headless client in charge of object saving (1 or 2)
 A3W_hcObjSaving = 0;               // Enable headless client vehicle & object saving (0 = no, 1 = yes)
 A3W_hcObjSavingID = 1;             // ID of the headless client in charge of object saving (1 or 2)
-
-// HEADLESS CLIENT NOTES:
-// The IDs of HCs are assigned according to the order they connect to the server. The first HC to connect will have ID 1, and the second one will have ID 2.
-// It is possible to set both caching and saving IDs to 1, which means both features will run on a single HC, therefore eliminating the need for a second one.
-// For object saving, you must make sure that the HC runs from the same folder as your server, or that it has the same config files, as the HC will read them directly like the server.
-// For saving with extDB, both server and HC need to connect to the same database, and with iniDB, both server and HC need to access the same db folder.
-// HC saving only works with extDB and iniDB. It does NOT work with profileNamespace, as loading takes place on the server and saving on the HC, so loading will fail as profile files are separate.
 
 // Server spawn settings
 A3W_serverSpawning = 0;            // Vehicle, object, and loot spawning (0 = no, 1 = yes)

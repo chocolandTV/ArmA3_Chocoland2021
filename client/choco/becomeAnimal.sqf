@@ -59,4 +59,4 @@ diag_log format ["Player %1 is an Animal %2", name player, _skin];
 //create Mission 
 [getpos (newUnit),_skin]execVM"client\choco\animalMission.sqf";
 
-sleep 30;revId = player addAction[('<t color=''#219eff''>' + ('Reverse to Player') +  '</t>'),'client\choco\reverseSkin.sqf'];
+sleep 30;revId = newUnit addAction[('<t color=''#219eff''>' + ('Reverse to Player') +  '</t>'),'client\choco\reverseSkin.sqf'];

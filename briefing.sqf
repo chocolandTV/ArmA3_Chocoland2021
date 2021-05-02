@@ -135,7 +135,7 @@ player createDiaryRecord ["changelog",
 [
 "v0.8",
 "
-<br/>[Added] Tanoa version
+<br/>[Added] Malden version
 <br/>[Added] Apex content on dev/preview branches
 <br/>[Added] Sticky explosive charges
 <br/>[Added] Heavy towing and airlifting

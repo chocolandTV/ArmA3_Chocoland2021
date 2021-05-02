@@ -9,10 +9,7 @@
 
 if (isDedicated) exitWith {};
 
-if (!isServer) then
-{
-	waitUntil {!isNil "A3W_network_compileFuncs"};
-};
+
 
 waitUntil {!isNil "A3W_serverSetupComplete"};
 
@@ -64,7 +61,6 @@ A3W_scriptThreads pushBack execVM "client\functions\evalManagedActions.sqf";
 
 // Starting
 player setVariable ["cmoney", 10000, true];
-[player, 10000, true] call A3W_fnc_setCMoney;
 player setVariable ["bmoney", 0,false];
 player setVariable["basebuilder", 0,false];
 player setVariable["animalpoints", 0,false];
@@ -76,6 +72,7 @@ MULTIBUY=false;
 ANIMALSWIMMING = false;
 //Player setup
 player call playerSetupStart;
+
 // Player saving - load data
 if (["A3W_playerSaving"] call isConfigOn) then
 {
@@ -141,8 +138,7 @@ A3W_scriptThreads pushBack execVM "addons\Lootspawner\LSclientScan.sqf";
 [] execVM "client\functions\drawPlayerIcons.sqf";
 [] execVM "addons\camera\functions.sqf";
 [] execVM "addons\UAV_Control\functions.sqf";
-//custom MaldenStorm 
-//[] spawn startMaldenStorm;
+
 
 call compile preprocessFileLineNumbers "client\functions\generateAtmArray.sqf";
 [] execVM "client\functions\drawPlayerMarkers.sqf";
@@ -159,8 +155,8 @@ inGameUISetEventHandler ["Action", "_this call A3W_fnc_inGameUIActionEvent"];
 		_x setVariable ["side", playerSide, true];
 	};
 } forEach pvar_spawn_beacons;
+
 [] execVM "client\choco\Motd.sqf";
-[] spawn createBasecoreMarker;
 [] execVM "client\choco\supplyController.sqf";
 [] execVM "client\choco\unlockController.sqf";
-
+[] call createBasecoreMarker;

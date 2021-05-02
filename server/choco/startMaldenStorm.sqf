@@ -34,6 +34,9 @@ _endvar};
 	sleep 10;
 	//restart
 	[] spawn startMaldenStorm;
+
+	
+
  */ 
  _sandStormDmg = {
  for "_i" from 1 to 60 do { 

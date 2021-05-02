@@ -4,7 +4,7 @@
 //	@file Name: atmPositions.sqf
 //	@file Author: AgentRev
 
-// ATM positions for Tanoa map (none...)
+// ATM positions for malden map (none...)
 [
 ]
 

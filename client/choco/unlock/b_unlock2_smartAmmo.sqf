@@ -1,7 +1,7 @@
 private["_weapon", "_mag", "_price"];
-_weapon = currentWeapon (vehicle player);
+_weapon = currentWeapon player;
 _mag = (getArray (configFile >> "Cfgweapons" >> _weapon >> "magazines")) select 0;
-(vehicle player) addMagazine _mag;
+player addMagazine _mag;
 
 // decrease money 500
 _price  =500;

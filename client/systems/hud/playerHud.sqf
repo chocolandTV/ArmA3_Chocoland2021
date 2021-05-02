@@ -176,7 +176,7 @@ while {true} do
 
 	if (isStreamFriendlyUIEnabled) then
 	{
-		_tempString = format ["<t color='#CCCCCCCC'> Tanoa - <br/>arma3.chocoland.tv</t>"];
+		_tempString = format ["<t color='#CCCCCCCC'> Malden - <br/>arma3.chocoland.tv</t>"];
 		_yOffset = _yOffset + 0.08;
 	}
 	else

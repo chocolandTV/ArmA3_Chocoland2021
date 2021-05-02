@@ -123,13 +123,13 @@ SERVERSPAWNING = true;
 // server loopSpawn
 while {SERVERSPAWNING} do
 { 
-
+sleep 600;
 	_objectType = selectRandom _objectList;
 
 	_pos = [[[position player,500]],[]] call BIS_fnc_randomPos;
 
 	[_objectType, _pos]call parachuteRandomSupply;
 	
-sleep 300;
+
 	
 };

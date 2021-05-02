@@ -7,7 +7,7 @@
 
 
 //get market
-[missionNamespace, "market", ""] call BIS_fnc_getServerVariable;
+//[missionNamespace, "market", ""] call BIS_fnc_getServerVariable;
 
 
 //get Base near 100 m thats locket
