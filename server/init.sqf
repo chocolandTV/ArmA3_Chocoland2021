@@ -504,7 +504,7 @@ if (["A3W_serverSpawning"] call isConfigOn) then
 	};
 };
 [] execVM "server\choco\serverSpawn.sqf";
-[] execVM "server\choco\startMaldenStorm.sqf";
+
 A3W_serverSpawningComplete = compileFinal "true";
 publicVariable "A3W_serverSpawningComplete";
 
@@ -544,3 +544,5 @@ if !(["A3W_hcObjCleanup"] call isConfigOn) then
 };
 
 //market= ["Bag Bunker (Small)","Land_BagBunker_Small_F", 2500, "object"];
+
+[] execVM "server\choco\MaldenStormController.sqf";

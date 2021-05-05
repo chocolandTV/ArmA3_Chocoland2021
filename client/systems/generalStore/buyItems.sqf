@@ -7,7 +7,6 @@
 //	@file Created: 20/11/2012 05:13
 //	@file Args: [int (0 = buy to player 1 = buy to crate)]
 
-if (!isNil "storePurchaseHandle" && {typeName storePurchaseHandle == "SCRIPT"} && {!scriptDone storePurchaseHandle}) exitWith {hint "Please wait, your previous purchase is being processed"};
 
 #include "dialog\genstoreDefines.sqf";
 
@@ -40,7 +39,7 @@ storePurchaseHandle = _this spawn
 	{
 		_itemText = _this select 0;
 		hint parseText format ["Not enough money for<br/>""%1""", _itemText];
-		playSound "FD_CP_Not_Clear_F";
+		
 		_price = -1;
 	};
 
@@ -48,7 +47,7 @@ storePurchaseHandle = _this spawn
 	{
 		_itemText = _this select 0;
 		hint parseText format ["Not enough space for<br/>""%1""", _itemText];
-		playSound "FD_CP_Not_Clear_F";
+		
 		_price = -1;
 	};
 
@@ -56,7 +55,7 @@ storePurchaseHandle = _this spawn
 	{
 		_itemText = _this select 0;
 		hint parseText format ["<t color='#ffff00'>An unknown error occurred.</t><br/>The purchase of ""%1"" has been cancelled.", _itemText];
-		playSound "FD_CP_Not_Clear_F";
+		
 		_price = -1;
 	};
 
@@ -64,7 +63,7 @@ storePurchaseHandle = _this spawn
 	{
 		_itemText = _this select 0;
 		hint format ["""%1"" has been spawned outside, in front of the store.", _itemText];
-		playSound "FD_Finish_F";
+		
 		_successHint = false;
 	};
 
@@ -111,7 +110,7 @@ storePurchaseHandle = _this spawn
 			_itemText = format ["You already have this %1.", _itemText];
 		};
 
-		playSound "FD_CP_Not_Clear_F";
+		
 		_price = -1;
 
 		[parseText _itemText, "Error"] call BIS_fnc_guiMessage
@@ -268,11 +267,11 @@ storePurchaseHandle = _this spawn
 				};
 				
 				//_requestKey = call A3W_fnc_generateKey;
-				playSound "FD_Finish_F";
+				
 			
 				player setVariable["basebuilder", (player getVariable["basebuilder",0]) + 1,true];
 				if(!MULTIBUY)then {	
-				hint format ["your Object has been spawned in the Air."];
+				
 				closeDialog 0;
 				[(_x select 1),_price,"object"] call requestStoreObject;}else
 				{
@@ -436,8 +435,8 @@ storePurchaseHandle = _this spawn
 		};
 
 		_playerMoneyText ctrlSetText format ["Cash: €%1", [player getVariable ["cmoney", 0]] call fn_numbersText];
-		if (_successHint) then { hint "Purchase successful!" };
-		playSound "FD_Finish_F";
+		if (_successHint) then {  };
+		
 	};
 
 	if (!isNil "_requestKey" && {!isNil _requestKey}) then
@@ -445,14 +444,5 @@ storePurchaseHandle = _this spawn
 		missionNamespace setVariable [_requestKey, nil];
 	};
 
-	sleep 0.25; // double-click protection
+	
 };
-
-if (typeName storePurchaseHandle == "SCRIPT") then
-{
-	private "_storePurchaseHandle";
-	_storePurchaseHandle = storePurchaseHandle;
-	waitUntil {scriptDone _storePurchaseHandle};
-};
-
-storePurchaseHandle = nil;

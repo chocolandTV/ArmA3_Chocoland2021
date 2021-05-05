@@ -10,7 +10,6 @@ _duration_duststorm_w	= _this select 1;
 _x_dev					= _this select 2;
 _y_dev					= _this select 3;
 
-// fum negru
 _fum_negru = "#particlesource" createVehicleLocal getPosATL _sursa_storm;
 _fum_negru setParticleCircle [60,[0.2,-0.5,20]];
 _fum_negru setParticleRandom [5,[_x_dev,_y_dev,20],[0,0,0],7,0.5,[0,0,0,0.1],0,0];

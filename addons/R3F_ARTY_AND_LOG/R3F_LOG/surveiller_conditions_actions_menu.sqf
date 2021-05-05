@@ -1,14 +1,4 @@
-/**
- * Vérifie régulièrement des conditions portant sur l'objet pointé par l'arme du joueur
- * Permet de diminuer la fréquence des vérifications des conditions normalement faites dans les addAction (~60Hz)
- * La justification de ce système est que les conditions sont très complexes (count, nearestObjects)
- *
- * Copyright (C) 2010 madbull ~R3F~
- *
- * This program is free software under the terms of the GNU General Public License version 3.
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+
 private ["_objet_pointe", "_resetConditions", "_hasNoProhibitedCargo"];
 
 _resetConditions =

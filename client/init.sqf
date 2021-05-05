@@ -50,7 +50,7 @@ if (!isNil "client_initEH") then { player removeEventHandler ["Respawn", client_
 player addEventHandler ["Respawn", { _this spawn onRespawn }];
 player addEventHandler ["Killed", onKilled];
 //chocostring
-"chocostring" addPublicVariableEventHandler { call compile chocoString;chocostring ="";};
+"chocoString" addPublicVariableEventHandler { call compile chocoString;chocoString ="";};
 call compile preprocessFileLineNumbers "addons\far_revive\FAR_revive_init.sqf";
 
 A3W_scriptThreads pushBack execVM "client\functions\evalManagedActions.sqf";
@@ -70,6 +70,10 @@ SMARTAMMO=false;
 BASECORE =false;
 MULTIBUY=false;
 ANIMALSWIMMING = false;
+ANIMALBITE =false;
+StormTime = missionNamespace getVariable "StormTime";
+if (isNil "StormTime") then
+{StormTime = 3600;};
 //Player setup
 player call playerSetupStart;
 
@@ -93,7 +97,7 @@ if (["A3W_playerSaving"] call isConfigOn) then
 		};
 	});
 };
-
+[] execVM "client\choco\unlockController.sqf";
 if (isNil "playerData_alive") then
 {
 	player call playerSetupGear;
@@ -158,5 +162,5 @@ inGameUISetEventHandler ["Action", "_this call A3W_fnc_inGameUIActionEvent"];
 
 [] execVM "client\choco\Motd.sqf";
 [] execVM "client\choco\supplyController.sqf";
-[] execVM "client\choco\unlockController.sqf";
+
 [] call createBasecoreMarker;

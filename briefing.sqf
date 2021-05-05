@@ -1,6 +1,6 @@
- 
+// ******************************************************************************************
 // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
- 
+// ******************************************************************************************
 //	@file Name: briefing.sqf
 
 if (!hasInterface) exitWith {};
@@ -19,20 +19,20 @@ player createDiarySubject ["credits", "Credits"];
 
 player createDiaryRecord ["changelog",
 [
-"v1.0",
+"v1.4d",
 "
+<br/>[Added] Progression System
 <br/>[Added] Parastore
-<br/>[Added] Server Spawing
-<br/>[Added] Paradrops
-<br/>[Added] progression system
-<br/>[Fixed] basebuilding and Animals
-<br/>[Fixed] A3Wasteland Mod
+<br/>[Added] RandomSpawn
+<br/>[Added] Database
+<br/>[Fixed] Move objects
+<br/>[Fixed] Killsystem
 "
 ]];
 
 player createDiaryRecord ["changelog",
 [
-"v0.9c",
+"v1.4c",
 "
 <br/>[Added] Tanks DLC
 <br/>[Added] 3rd column in vehicle store for parts
@@ -51,7 +51,7 @@ player createDiaryRecord ["changelog",
 
 player createDiaryRecord ["changelog",
 [
-"v0.9b",
+"v1.4b",
 "
 <br/>[Added] Artillery Strike in random mission crates
 <br/>[Added] Player body marker
@@ -81,7 +81,7 @@ player createDiaryRecord ["changelog",
 
 player createDiaryRecord ["changelog",
 [
-"v0.9",
+"v1.4",
 "
 <br/>[Added] Laws of War DLC
 <br/>[Added] Killfeed HUD
@@ -95,7 +95,7 @@ player createDiaryRecord ["changelog",
 
 player createDiaryRecord ["changelog",
 [
-"v0.8c",
+"v1.3c",
 "
 <br/>[Added] Jets DLC
 <br/>[Added] Aircraft carrier on Stratis
@@ -112,7 +112,7 @@ player createDiaryRecord ["changelog",
 
 player createDiaryRecord ["changelog",
 [
-"v0.8b",
+"v1.3b",
 "
 <br/>[Added] Private parking
 <br/>[Added] Private storage
@@ -133,9 +133,9 @@ player createDiaryRecord ["changelog",
 
 player createDiaryRecord ["changelog",
 [
-"v0.8",
+"v1.3",
 "
-<br/>[Added] Malden version
+<br/>[Added] Tanoa version
 <br/>[Added] Apex content on dev/preview branches
 <br/>[Added] Sticky explosive charges
 <br/>[Added] Heavy towing and airlifting
@@ -174,7 +174,7 @@ player createDiaryRecord ["changelog",
 
 player createDiaryRecord ["changelog",
 [
-"v0.8b",
+"v1.2b",
 "
 <br/>[Added] Scoreboard scrolling via mousewheel
 <br/>[Added] New paintjobs for Kajman, Strider, Gorgon, Hatchback
@@ -202,7 +202,7 @@ player createDiaryRecord ["changelog",
 
 player createDiaryRecord ["changelog",
 [
-"v0.8",
+"v1.2",
 "
 <br/>[Added] Mag Repack by Outlawled (Ctrl + " + NKEYNAME(19) + ")
 <br/>[Added] Adjustable NV by xx-LSD-xx (Shift + PageUp/Down)
@@ -227,7 +227,7 @@ player createDiaryRecord ["changelog",
 
 player createDiaryRecord ["changelog",
 [
-"v0.7b",
+"v1.1b",
 "
 <br/>[Added] Marksmen DLC content
 <br/>[Added] Prevent usage of commander camera
@@ -244,7 +244,7 @@ player createDiaryRecord ["changelog",
 
 player createDiaryRecord ["changelog",
 [
-"v0.6",
+"v1.1",
 "
 <br/>[Added] ATMs
 <br/>[Added] Union Jack vehicle color
@@ -263,7 +263,7 @@ player createDiaryRecord ["changelog",
 
 player createDiaryRecord ["changelog",
 [
-"v0.60c",
+"v1.0c",
 "
 <br/>[Added] MySQL support via extDB extension
 <br/>[Added] Town Invasion mission
@@ -329,16 +329,171 @@ player createDiaryRecord ["changelog",
 "
 ]];
 
+player createDiaryRecord ["changelog",
+[
+"v0.9h",
+"
+<br/>[Added] Custom revive system based on Farooq's Revive
+<br/>[Added] Territory payroll at regular intervals
+<br/>[Added] Emergency eject and free parachutes (jump key)
+<br/>[Added] Player names toggled with Windows key
+<br/>[Added] Increased missile damage against tanks and helis
+<br/>[Added] Ability to stash money in weapon crates
+<br/>[Added] Ability to sell vehicle inventory at stores
+<br/>[Added] More money shipment mission variants
+<br/>[Added] Reduced wheel damage from collisions
+<br/>[Added] Wreck salvaging
+<br/>[Added] Selling bin in stores
+<br/>[Added] Karts DLC content in stores
+<br/>[Added] Camo sniper rifles in gunstore
+<br/>[Added] Repair Offroad in vehicle store
+<br/>[Added] Team players on map as server option
+<br/>[Added] Unlimited stamina server option
+<br/>[Added] Static weapon saving server option
+<br/>[Added] More push vehicle actions
+<br/>[Added] Paradrop option for airlifted vehicles
+<br/>[Added] Preload checkbox on respawn menu
+<br/>[Added] Remote explosives store distance restriction
+<br/>[Added] Server time multipliers for day and night
+<br/>[Added] Addon-less profileNamespace server persistence
+<br/>[Added] Linux server compatibility
+<br/>[Added] Basic support for headless client
+<br/>[Changed] Independent territory capture is now group-based
+<br/>[Changed] Towns blocked if more enemies than friendlies
+<br/>[Changed] Increased ammo/fuel/repair cargo for resupply trucks
+<br/>[Changed] Increased territory capture rewards for Altis
+<br/>[Changed] Increased money mission rewards
+<br/>[Changed] Weapon loot in buildings now disabled by default
+<br/>[Changed] Mission crates loot was made more random
+<br/>[Changed] Thermal imaging is now available on UAVs
+<br/>[Changed] Increased vehicle store prices
+<br/>[Changed] Increased prices for thermal optics
+<br/>[Changed] Increased player icons up to 2000m
+<br/>[Changed] Improved antihack
+<br/>[Changed] Improved FPS
+<br/>[Fixed] Vehicle store purchase errors due to server lag
+<br/>[Fixed] Corpse created when leaving with player saving
+<br/>[Fixed] Custom vehicle damage handling not working
+<br/>[Fixed] Indie-indie spawn beacon stealing
+<br/>[Fixed] Repair kit and jerrycan distance limit
+<br/>[Fixed] Spawn beacon packing and stealing restrictions
+<br/>[Fixed] Not able to lock static weapons
+<br/>[Fixed] Unbreakable store windows
+<br/>[Fixed] Stratis airbase gunstore desk glitches
+<br/>[Fixed] Missions sometimes completing instantaneously
+<br/>[Fixed] Object ammo/fuel/repair cargo not saving
+<br/>[Fixed] Respawn menu aspect ratio on some resolutions
+<br/>[Fixed] Minor bugs with group system
+<br/>[Fixed] Minor bugs with player items
+<br/>[Fixed] Various other minor bugfixes and optimizations
+"
+]];
 
+player createDiaryRecord ["changelog",
+[
+"v0.9g",
+"
+<br/>[Added] - Vehicle stores
+<br/>[Added] - New lootspawner by Na_Palm, stuff in ALL buildings
+<br/>[Added] - New jets and truck added in A3 v1.14
+<br/>[Added] - New AAF vehicles added in A3 v1.08
+<br/>[Added] - New camos for Mk20 and MX in gunstores
+<br/>[Added] - Ability to push plane backwards
+<br/>[Added] - Ability to sell quadbike contents like crates
+<br/>[Added] - Abort delay during combat when player saving on
+<br/>[Changed] - Improved respawn menu
+<br/>[Changed] - Respawn now longer to preload destination
+<br/>[Changed] - Optimized player icons
+<br/>[Changed] - Optimized FPS fix
+<br/>[Changed] - Improved server persistence (requires iniDBI v1.4+)
+<br/>[Changed] - Improved player saving (server-specific)
+<br/>[Changed] - Improved base saving (server-specific)
+<br/>[Changed] - Reduced starting gear
+<br/>[Changed] - Modified some store prices
+<br/>[Changed] - Reduced initial fuel in cars and helis
+<br/>[Changed] - Removed Buzzard jet from too short runways
+<br/>[Changed] - Removed Kavala castle territory for use as base
+<br/>[Changed] - Increased vehicle repair time to 20 sec.
+<br/>[Changed] - Increased owner unlocking time to 10 sec.
+<br/>[Changed] - Toggling spawn beacon perms is now instant
+<br/>[Changed] - Improved Take option for player items
+<br/>[Changed] - Added option to cancel towing selection
+<br/>[Changed] - Added machine gunner to main mission NPCs
+<br/>[Changed] - Added grenadier to side mission NPCs
+<br/>[Fixed] - Error messages in various menus
+<br/>[Fixed] - Crash when toggling spawn beacon perms
+<br/>[Fixed] - Error when hacking warchests
+<br/>[Fixed] - Vehicle towing and lifting positions
+<br/>[Fixed] - Repair Vehicle option showing for brand new vehicles
+<br/>[Fixed] - Vest purchase price
+<br/>[Fixed] - Vest and helmet armor value
+<br/>[Fixed] - NPC leader now has launcher ammo
+"
+]];
+
+player createDiaryRecord ["changelog",
+[
+"v0.9f",
+"
+<br/>[Added] - Money missions
+<br/>[Added] - Sell Crate Items option at stores when moving crate
+<br/>[Changed] - Reorganized loots for crates and trucks
+<br/>[Fixed] - Broken Warchest menu
+<br/>[Fixed] - Spawn beacons not working for Independent groups
+<br/>[Fixed] - Player icons position inside buildings
+<br/>[Fixed] - MRAPs and quadbikes not spawning
+<br/>[Fixed] - Broken money rewards for territories
+"
+]];
+
+player createDiaryRecord ["changelog",
+[
+"v0.9e",
+"
+<br/>[Added] - Territory system
+<br/>[Added] - Jumping option (step over while running)
+<br/>[Added] - New weapons from v1.04 update
+<br/>[Changed] - Water and food now use water bottles and baked beans
+<br/>[Fixed] - Store object purchases not operating as intended
+<br/>[Fixed] - Objects purchased from stores not saving properly
+<br/>[Fixed] - Minor server-side memory leak
+"
+]];
+
+player createDiaryRecord ["changelog",
+[
+"v0.9d",
+"
+<br/>[Added] - Store object purchases
+<br/>[Changed] - New UI by KoS
+"
+]];
+
+player createDiaryRecord ["changelog",
+[
+"v0.9c",
+"
+<br/>[Changed] - Instant money pickup and drop
+<br/>[Changed] - Increased plane and heli spawning odds
+<br/>[Fixed] - FPS fix improvements
+<br/>[Fixed] - Vehicles disappearing when untowed or airdropped
+"
+]];
+
+player createDiaryRecord ["changelog",
+[
+"v0.9b",
+"
+<br/>[Initial release] - Welcome to Altis!
+"
+]];
 
 
 player createDiaryRecord ["credits",
 [
 "Credits",
 "
-<br/><font size='16' color='#BBBBBB'>Choco</font>
-
-<br/><font size='16' color='#BBBBBB'>A3Wasteland modification from :</font>
+<br/><font size='16' color='#BBBBBB'>Developed by A3Wasteland.com:</font>
 <br/>	* AgentRev (TeamPlayerGaming)
 <br/>	* JoSchaap (GoT/Tweakers.net)
 <br/>	* MercyfulFate
@@ -346,13 +501,19 @@ player createDiaryRecord ["credits",
 <br/>	* Bewilderbeest (KoS/KillonSight)
 <br/>	* Torndeco
 <br/>	* Del1te (404Games)
+<br/>
+<br/><font size='16' color='#BBBBBB'>Original Arma 2 Wasteland missions by:</font>
 <br/>	* Tonic
 <br/>	* Sa-Matra
 <br/>	* MarKeR
+<br/>
+<br/><font size='16' color='#BBBBBB'>Improved and ported to Arma 3 by 404Games:</font>
 <br/>	* Deadbeat
 <br/>	* Costlyy
 <br/>	* Pulse
 <br/>	* Domuk
+<br/>
+<br/><font size='16' color='#BBBBBB'>Other contributors:</font>
 <br/>	* 82ndab-Bravo17 (GitHub)
 <br/>	* afroVoodo (Armaholic)
 <br/>	* Austerror (GitHub)
@@ -390,6 +551,8 @@ player createDiaryRecord ["credits",
 <br/>	* wiking.at (A3W forums)
 <br/>	* xx-LSD-xx (Armaholic)
 <br/>	* Zenophon (BIS Forums)
+<br/>
+<br/><font size='16'>Thanks A LOT to everyone involved for the help and inspiration!</font>
 "
 ]];
 
@@ -439,7 +602,7 @@ player createDiaryRecord ["infos",
 [
 "Hints and Tips",
 "
-<br/><font size='18'>Chocoland</font>
+<br/><font size='18'>A3Wasteland</font>
 <br/>
 <br/>* At the start of the game, spread out and find supplies before worrying about where to establish a meeting place or a base, supplies are important and very valuable.
 <br/>
@@ -457,9 +620,9 @@ player createDiaryRecord ["infos",
 
 player createDiaryRecord ["infos",
 [
-"About Chocoland",
+"About Wasteland",
 "
-<br/>this is a 3in1 sandbox survival experience. You may scavenge supplies, weapons, and vehicles, and destroy the other teams. It is survival at its best! 
+<br/>Wasteland is a team versus team versus team sandbox survival experience. The objective of this mission is to rally your faction, scavenge supplies, weapons, and vehicles, and destroy the other factions. It is survival at its best! Keep in mind this is a work in progress, please direct your reports to http://forums.a3wasteland.com/
 <br/>
 <br/>FAQ:
 <br/>
@@ -467,13 +630,19 @@ player createDiaryRecord ["infos",
 <br/>A. See the above description
 <br/>
 <br/>Q. Where can I get a gun?
-<br/>A. Weapons are found in one of three places, first in ammo crates that come as rewards from missions, inside and outside buildings, and second, in the gear section of the vehicles, which also randomly spawn around the map. The last place to find a gun would be at the parastore located on the mousewheel action. You can also find them on dead players whose bodies have not yet been looted.
+<br/>A. Weapons are found in one of three places, first in ammo crates that come as rewards from missions, inside and outside buildings, and second, in the gear section of the vehicles, which also randomly spawn around the map. The last place to find a gun would be at the gunshops located throughout the map. You can also find them on dead players whose bodies have not yet been looted.
 <br/>
 <br/>Q. What are the blue circles on the map?
 <br/>A. The circles represent town limits. If friendly soldiers are in a town, you can spawn there from the re-spawn menu; however if there is an enemy presence, you will not be able to spawn there.
 <br/>
 <br/>Q. Why is it so dark, I cant see.
 <br/>A. The server has a day/night cycle just like in the real world, and as such, night time is a factor in your survival. It is recommended that you find sources of light or use your Nightvision Goggles as the darkness sets in.
+<br/>
+<br/>Q. Is it ok for me to shoot my team mates?
+<br/>A. If you are member of BLUFOR or OPFOR teams, then you are NOT allowed to shoot or steal items and vehicles from other players. If you play as Independent, you are free to engage anyone as well as team up with anyone you want.
+<br/>
+<br/>Q. Whats with the canisters, baskets and big bags?
+<br/>A. This game has a food and water system that you must stay on top of if you hope to survive. You can collect food and water from food sacks and wells, or baskets and plastic canisters dropped by dead players. Food and water will also randomly spawn around the map.
 <br/>
 <br/>Q. I saw someone breaking a rule, what do I do?
 <br/>A. Simply go into global chat and get the attention of one of the admins or visit our forums, and make a report if the offense is serious.

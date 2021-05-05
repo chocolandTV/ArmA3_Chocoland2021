@@ -1,12 +1,7 @@
- 
 // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
- 
-//	@file Version: 1.0
+
 //	@file Name: playerHud.sqf
 //	@file Author: [404] Deadbeat, [GoT] JoSchaap, [KoS] Bewilderbeest
-//	@file Created: 11/09/2012 04:23
-//	@file Args:
-
 #define hud_status_idc 3600
 #define hud_vehicle_idc 3601
 #define hud_activity_icon_idc 3602
@@ -136,21 +131,12 @@ while {true} do
 	// Icons in bottom right
 
 	_strArray = [];
-
-	
-		
-	
-
+	 _strArray pushBack format ["%1 <img size='0.7' image='client\icons\storm.icon.paa'/>", [(StormTime- serverTime)/3600, "HH:MM:SS"] call BIS_fnc_timeToString];
 	_strArray pushBack format ["%1 <img size='0.7' image='client\icons\money.paa'/>", [player getVariable ["cmoney", 0]] call fn_numbersText];
-	//custom Chocostats im HUD
 		_strArray pushBack format ["%1 <img size='0.7' image='\A3\ui_f\data\igui\cfg\cursors\leader_ca.paa'/>", [player getVariable ["bmoney", 0]] call fn_numbersText];
-		//bountyPerk
 		_strArray pushBack format ["%1 <img size='0.7' image='\A3\ui_f\data\igui\cfg\simpletasks\types\container_ca.paa'/>",[player getVariable ["basebuilder", 0]] call fn_numbersText];
-		//Basebuilder 
 		_strArray pushBack format ["%1 <img size='0.7' image='\a3\ui_f\data\map\vehicleicons\iconanimal_ca.paa'/>", [player getVariable ["animalpoints", 0]] call fn_numbersText];
-	//animal
-
-	if (!_unlimitedStamina) then {
+if (!_unlimitedStamina) then {
 		_strArray pushBack format ["%1 <img size='0.7' image='client\icons\running_man.paa'/>", 100 - ceil ((getFatigue player) * 100)];
 	};
 

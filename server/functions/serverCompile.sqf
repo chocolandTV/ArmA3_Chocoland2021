@@ -95,4 +95,8 @@ randomWeapons = [_path, "randomWeapon.sqf"] call mf_compile;
 // staticGunCreation = [_path, "staticGunCreation.sqf"] call mf_compile;
 staticHeliCreation = [_path, "staticHeliCreation.sqf"] call mf_compile;
 vehicleCreation = [_path, "vehicleCreation.sqf"] call mf_compile;
-
+//Storm
+_path = "AL_dust_storm";
+startStormEffect = [_path, "al_duststorm.sqf"] call mf_compile;
+huntStorm =[_path, "alias_hunt.sqf"] call mf_compile;
+lethalWallStorm = [_path, "lethal_wall.sqf"] call mf_compile;

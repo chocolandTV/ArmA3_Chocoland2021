@@ -15,10 +15,7 @@
 // Attente fin briefing
 sleep 0.1;
 
-private ["_liste_objets_depl_heli_remorq_transp", "_liste_vehicules_connus", "_liste_vehicules", "_count_liste_vehicules", "_i", "_objet","_animalArray","_var"];
-_animalArray = ["Rabbit_F","Salema_F","Ornate_random_F","Mackerel_F","Tuna_F","Mullet_F","CatShark_F","Rabbit_F","Snake_random_F","Snake_vipera_random_F",
-"Turtle_F","Hen_random_F","Cock_random_F","Cock_white_F","Fin_sand_F","Fin_blackwhite_F","Fin_ocherwhite_F","Fin_tricolour_F","Fin_random_F","Alsatian_Sand_F","Alsatian_Black_F",
-"Alsatian_Sandblack_F","Alsatian_Random_F","Goat_random_F","Sheep_random_F"];
+private ["_liste_objets_depl_heli_remorq_transp", "_liste_vehicules_connus", "_liste_vehicules", "_count_liste_vehicules", "_i", "_objet","_var","_liste_animals"];
 
 #ifdef R3F_LOG_enable
 // Union des tableaux de types d'objets servant dans un isKindOf
@@ -81,15 +78,7 @@ while {true} do
 
 			} forEach _liste_vehicules;
 
-			_liste_vehicules = nearestObjects [player, _animalArray, 75];
-			{
-			_var = _x getVariable ["R3F_LOG_init_done", nil];
-				if (alive _x && isNil "_var") then{
-
-					 _x addAction [("<img image='\A3\ui_f\data\map\vehicleicons\iconanimal_ca.paa' color='#ffff00'/> <t color='#ffff00'>" +"Become an Animal" + "</t>"), "client\choco\becomeAnimal.sqf", nil, 6, false, true, "", ""];
-					 _x setVariable["R3F_LOG_init_done", true,false];
-					};
-			}forEach _liste_vehicules;
+		
 		}
 		else
 		{

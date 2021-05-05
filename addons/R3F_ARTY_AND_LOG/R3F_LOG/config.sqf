@@ -476,7 +476,7 @@ R3F_LOG_CFG_objets_deplacables =
 	"Land_Stone_8m_F",
 	"Land_ToiletBox_F",
 	"Land_BarrelWater_F",
-"Land_BarGate_F",
+	"Land_BarGate_F",
 	"Land_Loudspeakers_F",
 	"Land_Timbers_F",
 	"Land_TreeBin_F",
@@ -509,15 +509,15 @@ R3F_LOG_CFG_objets_deplacables =
 	"Land_LampDecor_F",
 	"Land_LampSolar_F",
 	"Land_MarketShelter_F",
-	"Land_StallWater_F",//big
-	"Land_Offices_01_V1_F", // bigg
+	"Land_StallWater_F",
+	"Land_Offices_01_V1_F", 
 	"Land_Pavement_narrow_corner_F",
 	"Land_Pavement_narrow_F",
 	"Land_Pavement_wide_corner_F",
 	"Land_Pavement_wide_F",
 	"Land_Slide_F",
 	"Land_BC_Basket_F",
-	"Land_BC_Court_F",//big
+	"Land_BC_Court_F",
 	"Land_Goal_F",
 	"Land_Tribune_F",
 	"Land_Maroula_base_F",

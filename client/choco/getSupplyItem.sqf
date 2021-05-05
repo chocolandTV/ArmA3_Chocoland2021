@@ -7,7 +7,7 @@ switch (_itemData) do {
     };
     case "lootbox": {call createLootBox;
     };
-    case "nuclear": {[_itemData, 1] call mf_inventory_add;
+    case "nuclear": {call startNuclearStrike;
     };
     case "artillery": {[_itemData, 1] call mf_inventory_add;
     };

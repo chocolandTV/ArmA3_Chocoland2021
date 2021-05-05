@@ -1,27 +1,7 @@
- 
 // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
- 
-//	@file Version: 1.0
 //	@file Name: buyVehicles.sqf
-//	@file Author: His_Shadow, AgentRev
-//	@file Created: 06/14/2013 05:13
 
 scriptName "buyVehicles";
-
-if (!isNil "storePurchaseHandle" && {typeName storePurchaseHandle == "SCRIPT"} && {!scriptDone storePurchaseHandle}) exitWith {hint "Please wait, your previous purchase is being processed"};
-
-if (!isNil "vehicleStore_lastPurchaseTime") then
-{
-	_timeLeft = 5 - (diag_tickTime - vehicleStore_lastPurchaseTime);
-
-	if (_timeLeft > 0) then
-	{
-		hint format ["You need to wait %1s before buying another vehicle", ceil _timeLeft];
-		playSound "FD_CP_Not_Clear_F";
-		breakOut "buyVehicles";
-	};
-};
-
 #include "dialog\vehiclestoreDefines.hpp";
 
 storePurchaseHandle = _this spawn
@@ -83,62 +63,6 @@ storePurchaseHandle = _this spawn
 		playSound "FD_Finish_F";
 	};
 
-	_applyVehProperties =
-	{
-		params ["_vehicle", "_colorText", "_colorData", "_animList"];
-
-		if (count _colorData > 0) then
-		{
-			[_vehicle, _colorData] call applyVehicleTexture;
-		};
-
-		if (count _animList > 0) then
-		{
-			[_vehicle, false, _animList, true] remoteExecCall ["BIS_fnc_initVehicle", _vehicle];
-		};
-
-		// If UAV or UGV, fill vehicle with UAV AI, give UAV terminal to our player, and connect it to the vehicle
-		if (unitIsUAV _vehicle) then
-		{
-			private _uavTerminal = configName (configFile >> "CfgWeapons" >> (switch (playerSide) do // retrieve case-sensitive name
-			{
-				case BLUFOR: { "B_UavTerminal" };
-				case OPFOR:  { "O_UavTerminal" };
-				default      { "I_UavTerminal" };
-			}));
-
-			if !(_uavTerminal in assignedItems player) then
-			{
-				{ player unassignItem _x } forEach ["ItemGPS", "B_UavTerminal", "O_UavTerminal", "I_UavTerminal"]; // Unassign any GPS slot item
-
-				if (_uavTerminal in items player) then
-				{
-					player assignItem _uavTerminal;
-				}
-				else
-				{
-					player linkItem _uavTerminal;
-				};
-			};
-
-			_vehicle spawn
-			{
-				params ["_uav"];
-				private "_crewActive";
-				_time = time;
-
-				waitUntil {time - _time > 30 || {_crewActive = alive _uav && !(crew _uav isEqualTo []); _crewActive}};
-
-				if (_crewActive) then
-				{
-					player connectTerminalToUav _uav;
-				};
-			};
-		};
-
-		_vehicle
-	};
-
 	if (_itemData isEqualType []) then
 	{
 		_class = _itemData param [1];
@@ -149,53 +73,16 @@ storePurchaseHandle = _this spawn
 		{
 			[_itemText] call _showInsufficientFundsError;
 		};
-
-		_requestKey = call A3W_fnc_generateKey;
-		playSound "FD_Finish_F";
-			
-			if(!MULTIBUY)then 
-			{	
-				
-				closeDialog 0;
-				[_class, _price, _colorData] call requestStoreObject;
-			}else
-				{
-					[_class, _price, _colorData] call requestStoreMulti;
-				};
-			};
-		
-		_vehicle = objectFromNetId (missionNamespace getVariable _requestKey);
-
-		
-	};
-	if (!isNil "_price" && {_price > -1}) then // vehicle price now handled in spawnStoreObject.sqf
-	{
-	
-		vehicleStore_lastPurchaseTime = diag_tickTime;
-
-		//player setVariable ["cmoney", _playerMoney - _price, true];
-		//[player, -_price] call A3W_fnc_setCMoney;
-		_playerMoneyText ctrlSetText format ["Cash: €%1", [player getVariable ["cmoney", 0]] call fn_numbersText];
-
-		if (["A3W_playerSaving"] call isConfigOn) then
+		if(!MULTIBUY)then 
+		{	
+			closeDialog 0;
+			[_class, _price, _colorData] call requestStoreObject;};
+		}else
 		{
-			[] spawn fn_savePlayerData;
+			[_class, _price, _colorData] call requestStoreMulti;};
 		};
 	};
 
-	if (!isNil "_requestKey" && {!isNil _requestKey}) then
-	{
-		missionNamespace setVariable [_requestKey, nil];
-	};
-
-	sleep 0.5; // double-click protection
+sleep 0.01; // double-click protection
 };
-
-if (typeName storePurchaseHandle == "SCRIPT") then
-{
-	private "_storePurchaseHandle";
-	_storePurchaseHandle = storePurchaseHandle;
-	waitUntil {scriptDone _storePurchaseHandle};
-};
-
 storePurchaseHandle = nil;

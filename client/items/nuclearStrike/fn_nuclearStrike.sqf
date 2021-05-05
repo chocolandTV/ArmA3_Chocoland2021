@@ -1,77 +1,18 @@
- 
-// * This project is licensed under the GNU Affero GPL v3. Copyright © 2018 A3Wasteland.com *
- 
-//	@file Name: fn_NuclearStrike.sqf
-//	@file Author: AgentRev
+private "_pos";
+diag_log format ["Nuclear Strike - %1", [_UID, _player, name _player, side group _player, owner _player, remoteExecutedOwner, _pos, mapGridPosition _pos]];
 
-#include "artillery_defines.hpp"
-#define SLEEP_REALTIME(SECS) if (hasInterface) then { sleep (SECS) } else { uiSleep (SECS) }
-
-params [["_player",objNull,[objNull]], ["_pos",[],[[]]], ["_success",nil,[false]]];
-
-if (!isRemoteExecuted || !alive _player) exitWith {};
-if (isServer && !(remoteExecutedOwner in [owner _player, clientOwner])) exitWith
-{
-	["forged artilleryStrike", _this] call A3W_fnc_remoteExecIntruder;
-};
-
-if (isServer && isNil "_success") then // server process
-{
-	private _UID = getPlayerUID _player;
-	private _artiUseVar = "A3W_artilleryLastUse_" + _UID;
-	private _artiLastUse = if (_UID == "") then { [_player getVariable "A3W_artilleryLastUse"] param [0,nil,[0]] } else { missionNamespace getVariable _artiUseVar };
-	private _cooldown = ["A3W_artilleryCooldown", 3600] call getPublicVar;
-	_success = false;
-
-	if (count _pos == 2) then { _pos set [2,0] };
-
-	if (_pos isEqualTypeArray [0,0,0] && (isNil "_artiLastUse" || {diag_tickTime - _artiLastUse >= _cooldown})) then
+nuclearStrike= {
+_pos = _this select 0;
+for "_i" from 1 to 100 do
 	{
-		diag_log format ["Nuclear Strike - %1", [_UID, _player, name _player, side group _player, owner _player, remoteExecutedOwner, _pos, mapGridPosition _pos]];
-
-		[
-			_player,
-			_pos,
-			"R_230mm_fly",
-			5000,
-			5000
-		]
-		spawn
-		{
-			params ["_player", "_pos", "_ammo", "_count", "_radius"];
-			for "_i" from 1 to _count do
-			{
-				_ipos = _pos vectorAdd ([[random _radius, 0, 7500], random 360] call BIS_fnc_rotateVector2D); // spawns at 7500m with -150m/s speed, about 30 seconds fall time
-				_shell = createVehicle [_ammo, _ipos, [], 0, "NONE"];
-				_shell setShotParents [_player, objNull];
-				_shell setVelocity [0,0,-150];
-				SLEEP_REALTIME(0.01);
-			};
-		};
-
-		_artiLastUse = diag_tickTime;
-
-		if (_UID != "") then
-		{
-			missionNamespace setVariable [_artiUseVar, _artiLastUse];
-			owner _player publicVariableClient _artiUseVar;
-		};
-
-		_player setVariable ["A3W_artilleryLastUse", _artiLastUse];
-		_success = true;
+	_ipos = _pos vectorAdd ([[random 500, 0, 2500], random 360] call BIS_fnc_rotateVector2D); 
+	_shell = createVehicle ["R_230mm_fly", _ipos, [], 0, "NONE"];
+	_shell setShotParents [player, objNull];
+	_shell setVelocity [0,0,-150];
+	sleep 0.001;
 	};
-
-	[_player, _pos, _success] remoteExecCall ["A3W_fnc_artilleryStrike", _player];
-}
-else // client post-process
-{
-	if (_success) then
-	{
-		["Nuclear successfully initiated.", 5] call a3w_actions_notify;
-	}
-	else
-	{
-		["nuclear", 1] call mf_inventory_add;
-		["Error initiating strike.\n Please try again. ", 5] call a3w_actions_notify;
-	};
+	
 };
+openMap true;
+ClickOnMapEH = addMissionEventHandler ["MapSingleClick", {[(_this select 1)] spawn nuclearStrike; removeMissionEventHandler ["MapSingleClick",ClickOnMapEH];}];
+

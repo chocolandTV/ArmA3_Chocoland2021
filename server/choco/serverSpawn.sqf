@@ -29,6 +29,7 @@ _spawningObject={
 	_pos = _this select 0;
 	_objClass = selectRandom objectList;
 	_randomPos = [_pos, 30, 400, 10, 0, 0.1, 0] call BIS_fnc_findSafePos;
+	_randomPos set [2,0];
 	_obj = createVehicle [_objClass, _randomPos, [], 0, "NONE"];
 	_obj allowDamage _allowDamage;
 	_obj setVariable ["allowDamage", _allowDamage, true];
@@ -61,6 +62,7 @@ _spawningAirships={
 
 private ["_pos","_objClass","_randomPos","_obj","_weapon", "_mag"];
 _pos = _this select 0;
+_pos set [2,0];
 _objClass =selectRandom airVehicles;
 _obj = createVehicle [_objClass, _pos, [], 0, "NONE"];
 _obj setFuel 1;
@@ -76,6 +78,7 @@ _spawningMoney=
 private ["_pos","_randomPos","_cash"];
 _pos = _this select 0;
 _pos = [_pos, 30, 200, 10, 0, 0.1, 0] call BIS_fnc_findSafePos;
+_pos set [2,0];
 _cash = createVehicle ["Land_Money_F", _pos,[], 0, "NONE"];
 _cash setVariable ["cmoney", (floor random 100)*100, true];
 _cash setVariable ["owner", "world", true];
@@ -88,6 +91,7 @@ _spawningAnimals=
 private ["_pos","_randomPos","_obj"];
 _pos = _this select 0;
 _pos = [_pos, 30, 200, 10, 0, 0.1, 0] call BIS_fnc_findSafePos;
+_pos set [2,0];
 _objClass = selectRandom _animalArray;
 _obj = _animalGroup createUnit [_objClass, _pos,[],0,"NONE"];
 //_obj setVariable ["BIS_fnc_animalBehaviour_disable", true];
@@ -95,7 +99,7 @@ _obj = _animalGroup createUnit [_objClass, _pos,[],0,"NONE"];
 _obj addEventHandler ["killed", {[this]call _animalBomb;}];
 _obj setPos _pos;
 };
-sleep 600;
+
 //server init spawn
 {
 	[getMarkerPos _x]call _spawningAirships

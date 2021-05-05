@@ -80,10 +80,10 @@ if (_player == player) then
 	combatTimestamp = -1; // Reset abort timer
 };
 
-diag_log format ["KILLED by %1", if (isPlayer _killer) then { "player " + str [name _killer, getPlayerUID _killer] } else { _killer }];
+
 if(isPlayer _killer) then{
-_string =format["if(name player == ""%1"")then {[%2,%3]call getMoneyReward;",name _killer,1000,_player getVariable["bmoney",0]];
-chocostring=_string;
+diag_log format ["KILLED by %1", if (isPlayer _killer) then { "player " + str [name _killer, getPlayerUID _killer] } else { _killer }];
+chocostring = format["if(name player == ""%1"")then {[%2,%3]call getMoneyReward;",name _killer,1000,_player getVariable["bmoney",0]];
 publicvariable"chocostring";
 };
 // reset var in case Killed event triggers twice (happens on rare occasions)

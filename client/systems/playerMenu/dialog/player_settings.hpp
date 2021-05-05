@@ -214,8 +214,8 @@ class playerSettings {
 			idc = -1;
 			text = "Disable Infos";
 			onButtonClick = "NOINFO = true;";
-			x = 0.190; y = 0.57;
-			w = 0.125; h = 0.033 * safezoneH;
+			x = 0.330; y = 0.57;
+			w = 0.195; h = 0.033 * safezoneH;
 		};
 		
 	};

@@ -33,10 +33,15 @@ sleep 0.3;
 
  [newUnit] join (_ar select 4);
 removeSwitchableUnit newUnit;
-camera_loop_active = false;
-["A3W_camera_oneachFrame", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
- camera_loop_active =  true;
-["A3W_camera_oneachFrame", "onEachFrame", camera_loop] call BIS_fnc_addStackedEventHandler;
+
+_pos = (getPosATL newUnit);
+ 
+  showCinemaBorder false;
+  cameraEffectEnableHUD true;
+  clearRadio;
+  enableRadio true;
+  _camera camCommand "INERTIA OFF";
+
 sleep 0.3;
   deleteVehicle  _dummyUnit;
  oldUnit =_oldUnit;
@@ -48,9 +53,16 @@ sleep 0.3;
 newUnit addweapon "ItemMap";
 newUnit addweapon "ItemCompass";
 newUnit addweapon "ItemWatch";
-newUnit addEventHandler ["Respawn", { _this spawn onRespawn }];
-newUnit addEventHandler ["Killed", onKilled];
+newUnit addEventHandler ["Respawn", {endMission "LOSER"; }];
+newUnit addEventHandler ["Killed", {endMission "LOSER";}];
 //bombId = newUnit addAction[('<t color=''#FF33CC''>' + ('Blew Up') +  '</t>'),'server\functions\animalBomb.sqf'];
+if(ANIMALBITE) then {
+revId1  = player addAction [("<img image='\a3\ui_f\data\map\vehicleicons\iconanimal_ca.paa'/> <t color='#dddd00'>Bite (SPACE)</t>"), "client\choco\unlock\a_unlock2_bitePlayer.sqf", 1, 5, true, false];
+};
+if(ANIAMLBOMB) then {
+revId2  = player addAction [("<img image='\a3\ui_f\data\map\vehicleicons\iconanimal_ca.paa'/> <t color='#dddd00'>Plant Bomb</t>"), "client\choco\unlock\a_unlock3_plantBomb.sqf", 1, 5, true, false];
+};
+
 // add action Bite 10% dmg on player nearby
  walked =false;
 
@@ -59,4 +71,8 @@ diag_log format ["Player %1 is an Animal %2", name player, _skin];
 //create Mission 
 [getpos (newUnit),_skin]execVM"client\choco\animalMission.sqf";
 
-sleep 30;revId = newUnit addAction[('<t color=''#219eff''>' + ('Reverse to Player') +  '</t>'),'client\choco\reverseSkin.sqf'];
+sleep 30;//revId = newUnit addAction[('<t color=''#219eff''>' + ('Reverse to Player') +  '</t>'),'client\choco\reverseSkin.sqf'];
+//revId = player addAction ["<t color='#FF0000'>" + "Reverse to Player" + "</t>", "client\choco\reverseSkin.sqf", ["action_release"]];
+revId3  = player addAction [("<img image='\a3\ui_f\data\map\vehicleicons\iconanimal_ca.paa'/> <t color='#dddd00'>Reverse to Player</t>"), "client\choco\reverseSkin.sqf", 1, 5, true, false];
+//_action_menu_90 = player addAction [("<img image='client\ui\ui_arrow_combo_ca.paa'/> <t color='#dddd00'>Position higher</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\objet_deplacable\upanddown.sqf", 1, 5, true, false];
+//_action_menu_180 = player addAction [("<img image='client\ui\ui_arrow_combo_ca.paa'/> <t color='#dddd00'>position lower</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\objet_deplacable\upanddown.sqf", 2, 5, true, false];

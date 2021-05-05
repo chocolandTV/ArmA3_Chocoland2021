@@ -14,10 +14,11 @@ _player setVariable ["cmoney", _playerMoney - _price, true];
 diag_log format ["Parastore Spawning ID , PRICE -  %1,  %2",_this select 0, _this select 1];
 _dir = getDir player;
 _pos = getPosATL player;
-_pos = [(_pos select 0)+25*sin(_dir),(_pos select 1)+25*cos(_dir),(_pos select 2)];
-if((_this select 0) == "Land_Carrier_01_base_F" || (_this select 0) == "Land_Destroyer_01_base_F")then
+_pos = [(_pos select 0)+15*sin(_dir),(_pos select 1)+15*cos(_dir),(_pos select 2)];
+if(_this select 0 == "Goat_Cart") exitWith{call goatCart;};
+if((_this select 0) == "Land_Carrier_01_base_F" || (_this select 0) == "Land_Destroyer_01_base_F")exitWith
 {
-	_pos= (getPosASL player);
+	[_this select 0] call createCarrierDestroyer;
 };
 _obj = createVehicle [(_this select 0), _pos, [], 0, "NONE"];
 _obj allowdamage false;
@@ -26,12 +27,7 @@ _obj setVariable ["ownerUID", getPlayerUID _player, true];
 _obj setVariable ["ownerName", name _player, true];
 _obj setPlateNumber name _player;
 _obj setDir _dir;
-if((_this select 0) == "Land_Carrier_01_base_F" || (_this select 0) == "Land_Destroyer_01_base_F")exitWith
-{
-	_obj setDamage (0.00);
-	_obj allowdamage true;
-	[_obj, player] remoteExecCall ["enableCollisionWith", 0, _obj];
-};
+
 if((_skin) != "object")then{[_obj, (_skin)] call applyVehicleTexture;};
 if((_this select 0) in _collisionObjects)then {[_obj, player] remoteExecCall ["enableCollisionWith", 0, _obj];};
 private _isUAV = (round getNumber (configFile >> "CfgVehicles" >> (_this select 0) >> "isUav") > 0);
@@ -55,11 +51,11 @@ _obj setDamage 0;
 _obj allowdamage true;
 sleep 15;
 if((damage _obj) > 0.8)then {
-deleteVehicle _obj;
-systemChat"oh Paradrop failed, you got your money back. please try again.";
-_playerMoney = player getVariable ["cmoney", 0];
-_player setVariable ["cmoney", _playerMoney + _price, true];
-[_player, +_price] call A3W_fnc_setCMoney;
-[] spawn fn_savePlayerData;
+	deleteVehicle _obj;
+	systemChat"oh Paradrop failed, you got your money back. please try again.";
+	_playerMoney = player getVariable ["cmoney", 0];
+	_player setVariable ["cmoney", _playerMoney + _price, true];
+	[_player, +_price] call A3W_fnc_setCMoney;
+	[] spawn fn_savePlayerData;
 };
 

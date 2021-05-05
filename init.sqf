@@ -1,19 +1,4 @@
- 
-// * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
- 
-//	@file Version: 1.2
-//	@file Name: init.sqf
-//	@file Author: [404] Deadbeat, [GoT] JoSchaap, AgentRev
-//	@file Description: The main init.
-
-#include "debugFlag.hpp"
-
-#ifdef A3W_DEBUG
-#define DEBUG true
-#else
-#define DEBUG false
-#endif
-
+ // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
 enableSaving [false, false];
 A3W_sessionTimeStart = diag_tickTime;
 
@@ -25,11 +10,11 @@ X_Client = false;
 X_JIP = false;
 
 CHVD_allowNoGrass = false;
-CHVD_allowTerrain = false; // terrain option has been disabled out from the menu due to terrible code, this variable has currently no effect
-CHVD_maxView = 3500; // Set maximum view distance (default: 12000)
-CHVD_maxObj = 3500; // Set maximimum object view distance (default: 12000)
+CHVD_allowTerrain = false; 
+CHVD_maxView = 3500; 
+CHVD_maxObj = 3500; 
 
-// versionName = ""; // Set in STR_WL_WelcomeToWasteland in stringtable.xml
+// versionName = ""; 
 
 if (isServer) then { X_Server = true };
 if (!isDedicated) then { X_Client = true };
@@ -37,12 +22,13 @@ if (isNull player) then { X_JIP = true };
 
 A3W_scriptThreads = [];
 
-[DEBUG] call compile preprocessFileLineNumbers "globalCompile.sqf";
+[false] call compile preprocessFileLineNumbers "globalCompile.sqf";
 
 //init Wasteland Core
 [] execVM "config.sqf";
-[] execVM "storeConfig.sqf"; // Separated as its now v large
 [] execVM "briefing.sqf";
+[] execVM "storeConfig.sqf"; 
+
 
 if (!isDedicated) then
 {

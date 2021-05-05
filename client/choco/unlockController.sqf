@@ -1,4 +1,4 @@
-sleep 100;
+
 
 []spawn {//spawn BOUNTY unlocks
 //unlock1 waituntil variable = 1   keepWeapon
@@ -41,12 +41,12 @@ titleText ["<t color='#ffffff' size='3'>unlocked : animal - swimming</t>", "PLAI
 //unlock2 waituntil variable = 1000 bitePlayer
 waitUntil {(player getVariable["animalpoints",0]) > 999};
 titleText ["<t color='#ffffff' size='3'>unlocked : animal - bite action - press B - 2 sec cooldown</t>", "PLAIN DOWN", -1, true, true];
-//call a_unlock2;
+ANIMALBITE =true;
 
 //unlock3 waituntil variable = 10000 plantBomb
 waitUntil {(player getVariable["animalpoints",0]) > 9999};
 titleText ["<t color='#ffffff' size='3'>unlocked : animal - plant bombs - check mousewheel - allways 1 charge</t>", "PLAIN DOWN", -1, true, true];
-//call a_unlock3;
+ANIAMLBOMB = true;
 
 //unlock4 waituntil variable = 100 000 seagull
 waitUntil {(player getVariable["animalpoints",0]) > 99999};

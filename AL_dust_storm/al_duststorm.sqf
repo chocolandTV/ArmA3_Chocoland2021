@@ -1,8 +1,7 @@
 // by ALIAS
 // Dust Storm SCRIPT 
-// Tutorial: https://www.youtube.com/user/aliascartoons
 
-private ["_vizibility","_stormsource","_x_dev","_y_dev"];
+private ["_vizibility","stormsource","_x_dev","_y_dev"];
 
 if (!isServer) exitWith {};
 
@@ -40,13 +39,15 @@ sleep 0.1;
 	60 setFog al_foglevel;
 	60 setRain al_rainlevel;
 	60 setLightnings al_thundlevel;
+//	180 setOvercast al_overforecast;
 	setWind [al_windlevel select 0, al_windlevel select 1, true];
 	//forceWeatherChange;
 };
 
 [] spawn {
 	while {al_duststorm_on} do {
-		["bcg_wind"] remoteExec ["playSound"];
+		chocostring =" playSound ""bcg_wind"";";
+		publicVariable"chocostring";
 		sleep 67;
 	};
 };
@@ -60,33 +61,40 @@ sleep 0.1;
 	};
 };
 
-[[],"AL_dust_storm\alias_duststorm_effect.sqf"] remoteExec ["execVM",0,true];
+chocostring= "call effectStorm;";
+publicVariable"chocostring";
 
 if (_dust_wall) then 
 {
-	_rand_pl = [] execVM "AL_dust_storm\alias_hunt.sqf";
+	_rand_pl = [] spawn huntStorm;
 	waitUntil {scriptDone _rand_pl};
 	_pozobcj = hunt_alias getRelPos [800,(_direction_duststorm-180)];
-	_stormsource = "Land_HelipadEmpty_F" createVehicle _pozobcj;
-	_stormsource setDir _direction_duststorm;//_alpha = getDir _sursa_storm;
+	stormsource = "Land_HelipadEmpty_F" createVehicle _pozobcj;
+	stormsource setDir _direction_duststorm;//_alpha = getDir _sursa_storm;
 	if ((_direction_duststorm>315)or(_direction_duststorm<45)) then {_x_dev=600; _y_dev = 60};
 	if ((_direction_duststorm<225)or(_direction_duststorm>135)) then {_x_dev=600; _y_dev = 60};
 	if ((_direction_duststorm<=135)&&(_direction_duststorm>=45)) then {_x_dev=60; _y_dev = 600};
 	if ((_direction_duststorm>=225)&&(_direction_duststorm<=315)) then {_x_dev=60; _y_dev = 600};
-	[[_stormsource,_duration_duststorm,_x_dev,_y_dev],"AL_dust_storm\alias_dust_wall.sqf"] remoteExec ["execVM",0,true];
-
-	[_stormsource] spawn 
+	chocostring =format["[%1,%2,%3,%4]call dustWallStorm;",stormsource,_duration_duststorm,_x_dev,_y_dev];
+	publicVariable="chocostring";
+	[stormsource] spawn 
 	{
-		private ["_stormsource_s"];
-		_stormsource_s = _this select 0;
+		private ["stormsource_s"];
+		stormsource_s = _this select 0;
+		publicVariable"stormsource_s";
 		while {al_duststorm_on} do 
 		{
-			[_stormsource_s,["uragan_1",2000]] remoteExec ["say3d"];
+			chocostring= format["%1 say3D [""uragan_1"", 2000, 1, false, 0];", stormsource_s];
+			publicVariable"chocostring";
 			sleep 40;
 		};
 	};
-	if (_lethal_wall) then {[_stormsource,_x_dev,_y_dev] execvm "AL_dust_storm\lethal_wall.sqf"};
-	[_stormsource,_direction_duststorm] spawn {private ["_stormsource","_direction_duststorm"]; _stormsource = _this select 0; _direction_duststorm = _this select 1; while {al_duststorm_on} do {_stormsource setPos (_stormsource getRelPos [10,_direction_duststorm]);sleep 5}};
+	if (_lethal_wall) then {
+	[stormsource,_x_dev,_y_dev] spawn lethalWallStorm; };
+	[stormsource,_direction_duststorm] spawn {
+	private ["stormsource","_direction_duststorm"];
+	stormsource = _this select 0; _direction_duststorm = _this select 1;
+	while {al_duststorm_on} do {stormsource setPos (stormsource getRelPos [10,_direction_duststorm]);sleep 5}};
 };
 
 // seteaza wind storm functie de directie
@@ -118,9 +126,11 @@ if (_effect_on_objects) then {
 
 	while {al_duststorm_on} do {
 		sleep 1;
-		_rand_pl = [] execVM "AL_dust_storm\alias_hunt.sqf";
+		_rand_pl = []spawn huntStorm;
 		waitUntil {scriptDone _rand_pl};
 
+	// interval object blow
+		//sleep 1;
 		sleep 60+random 120;
 		
 		al_nearobjects = nearestObjects [hunt_alias,[],50];
@@ -132,19 +142,22 @@ if (_effect_on_objects) then {
 		
 		sleep 1;
 		
-
+		// alege obiect
 		_blowobj= ar_obj_eligibl call BIS_fnc_selectRandom;
 
+		//durata_rafala = 1+random 5;	sleep 30+random 120;
 		sleep 1;
 		[] spawn {
 			_rafale = ["rafala_1","sandstorm","rafala_4_dr","rafala_5_st"] call BIS_fnc_selectRandom;
-			[_rafale] remoteExec ["playSound"];
+		chocostring = format[" playSound ""%1"";",_rafale];
+		publicVariable"chocostring";
 		};
 		
 		if (!isNull _blowobj) then {
 			_xblow	= 0.1+random 5;
 			_yblow	= 0.1+random 5;
-
+	
+			// creste viteza incremental
 			_xx=0;
 			_yy=0;
 			
@@ -161,7 +174,8 @@ if (_effect_on_objects) then {
 
 while {al_duststorm_on} do {
 	_rafale = ["rafala_1","sandstorm","rafala_4_dr","rafala_5_st"] call BIS_fnc_selectRandom;
-	[_rafale] remoteExec ["playSound"];
+	chocostring = format[" playSound ""%1"";",_rafale];
+	publicVariable"chocostring";
 	sleep 60+random 120;
 };
-deleteVehicle _stormsource;
+deleteVehicle stormsource;
