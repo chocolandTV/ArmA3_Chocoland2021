@@ -1,5 +1,9 @@
 
+private ["_perklevel", "_requirelvl","_var"];
+_requirelvl = 10000;
+_perklevel = player getVariable["animalpoints",0];
 
+if(_perklevel > _requirelvl) then {
 
 forwardAndBackward = 4; 
 leftAndRight = 2;     
@@ -99,7 +103,7 @@ toggle_hover =
 
 if (isnil "iBeFlying") then 
 {
-    titleText ["Press 'spacebar' to toggle hover.","PLAIN DOWN"]; titleFadeOut 4;
+    titleText ["Press 'spacebar' to toggle hover. And then Q for up and Y/Z for Down","PLAIN DOWN"]; titleFadeOut 4;
     iBeFlying = true;
     keyForward = (findDisplay 46) displayAddEventHandler ["KeyDown","if ((_this select 1) == 17) then {call move_forward;}"];     //W - Forward
     keyLeft = (findDisplay 46) displayAddEventHandler ["KeyDown","if ((_this select 1) == 30) then {call move_left;}"];         //A - Left
@@ -128,4 +132,10 @@ while {iBeFlying} do
     {
 (vehicle player) setvelocity [0,0,0.2];
     };
+};
+
+}else{
+
+_var= _requirelvl - _perklevel;
+player globalChat format["You don`t have enough animalpoints, you still need %1 points.", _var];
 };

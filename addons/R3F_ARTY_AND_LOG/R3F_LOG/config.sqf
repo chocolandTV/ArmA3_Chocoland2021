@@ -5,7 +5,7 @@
  */
 R3F_LOG_CFG_remorqueurs =
 [
-	"C_Kart_01_F",
+"C_Kart_01_F",
 "C_Tractor_01_F",
 "I_G_Quadbike_01_F",
 "C_Hatchback_01_sport_F",
@@ -77,18 +77,18 @@ R3F_LOG_CFG_remorqueurs =
  */
 R3F_LOG_CFG_remorqueursH =
 [
-	"Tractor_01_base_F",
-	"Truck_01_base_F",
-	"Truck_02_base_F",
-	"Truck_03_base_F",
-	"Wheeled_APC_F",
-	"APC_Tracked_01_base_F",
-	"APC_Tracked_02_base_F",
-	"APC_Tracked_03_base_F",
-	"MBT_01_base_F",
-	"MBT_02_base_F",
-	"MBT_03_base_F",
-	"MBT_04_base_F"
+"Tractor_01_base_F",
+"Truck_01_base_F",
+"Truck_02_base_F",
+"Truck_03_base_F",
+"Wheeled_APC_F",
+"APC_Tracked_01_base_F",
+"APC_Tracked_02_base_F",
+"APC_Tracked_03_base_F",
+"MBT_01_base_F",
+"MBT_02_base_F",
+"MBT_03_base_F",
+"MBT_04_base_F"
 ];
 
 R3F_LOG_CFG_remorqueurs append R3F_LOG_CFG_remorqueursH;
@@ -98,8 +98,8 @@ R3F_LOG_CFG_remorqueurs append R3F_LOG_CFG_remorqueursH;
  */
 R3F_LOG_CFG_objets_remorquables =
 [
-	"Car_F",
-	"Ship_F",
+"Car_F",
+"Ship_F",
 "O_UAV_01_F",
 "I_UAV_01_F",
 "B_UAV_06_F",
@@ -151,26 +151,26 @@ R3F_LOG_CFG_objets_remorquables =
  */
 R3F_LOG_CFG_objets_remorquablesH =
 [
-	"Tractor_01_base_F",
-	"Wheeled_APC_F",
-	"APC_Tracked_01_base_F",
-	"APC_Tracked_02_base_F",
-	"APC_Tracked_03_base_F",
-	"MBT_01_base_F",
-	"MBT_02_base_F",
-	"MBT_03_base_F",
-	"MBT_04_base_F",
-	"Heli_Attack_02_base_F",
-	"Heli_Transport_01_base_F",
-	"Heli_Transport_02_base_F",
-	"Heli_Transport_03_base_F",
-	"Heli_Transport_04_base_F",
-	"VTOL_base_F",
-	"UAV_05_Base_F",
-	"Plane_Fighter_01_Base_F",
-	"Plane_Fighter_02_Base_F",
-	"Plane_CAS_01_base_F",
-	"Plane_CAS_02_base_F"
+"Tractor_01_base_F",
+"Wheeled_APC_F",
+"APC_Tracked_01_base_F",
+"APC_Tracked_02_base_F",
+"APC_Tracked_03_base_F",
+"MBT_01_base_F",
+"MBT_02_base_F",
+"MBT_03_base_F",
+"MBT_04_base_F",
+"Heli_Attack_02_base_F",
+"Heli_Transport_01_base_F",
+"Heli_Transport_02_base_F",
+"Heli_Transport_03_base_F",
+"Heli_Transport_04_base_F",
+"VTOL_base_F",
+"UAV_05_Base_F",
+"Plane_Fighter_01_Base_F",
+"Plane_Fighter_02_Base_F",
+"Plane_CAS_01_base_F",
+"Plane_CAS_02_base_F"
 ];
 
 R3F_LOG_CFG_objets_remorquables append R3F_LOG_CFG_objets_remorquablesH;
@@ -525,6 +525,34 @@ R3F_LOG_CFG_objets_deplacables =
 	"Land_MolonLabe_F",
 	"Land_Amphitheater_F",
 	"Land_Castle_01_tower_F",
+    "Land_Castle_01_church_a_ruin_F",
+    "Land_Castle_01_church_b_ruin_F",
+    "Land_Castle_01_church_ruin_F",
+    "Land_Castle_01_house_ruin_F",
+    "Land_Castle_01_step_F",
+    "Land_Castle_01_tower_ruins_F",
+    "Land_Castle_01_wall_01_F",
+    "Land_Castle_01_wall_02_F",
+    "Land_Castle_01_wall_03_F",
+    "Land_Castle_01_wall_04_F",
+    "Land_Castle_01_wall_05_F",
+    "Land_Castle_01_wall_06_F",
+    "Land_Castle_01_wall_07_F",
+    "Land_Castle_01_wall_08_F",
+    "Land_Castle_01_wall_09_F",
+    "Land_Castle_01_wall_10_F",
+    "Land_Castle_01_wall_11_F",
+    "Land_Castle_01_wall_12_F",
+    "Land_Castle_01_wall_13_F",
+    "Land_Castle_01_wall_14_F",
+    "Land_Castle_01_wall_15_F",
+    "Land_Castle_01_wall_16_F",
+	"Land_CastleRuins_01_bastion_F",
+    "Land_CastleRuins_01_wall_10m_F",
+    "Land_CastleRuins_01_wall_d_L_F",
+    "Land_CastleRuins_01_wall_d_R_F",
+	"Land_Dome_Big_F",
+	"Land_Dome_Small_F",
 	"Land_Church_01_V1_F",
 	"Land_LightHouse_F",
 	"Land_Lighthouse_small_F",

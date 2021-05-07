@@ -24,7 +24,7 @@ addSwitchableUnit newUnit;
 selectPlayer newUnit;
 newUnit setRank (_ar select 2);
 newUnit addScore (_ar select 3);
-
+[] execVM "addons\camera\functions.sqf";
 sleep 0.3;
 
    _string= format[" newUnit setVehicleInit ""this setVehicleVarName ""%1"" ""; %1 = this;", _ar select 7];

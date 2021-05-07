@@ -124,6 +124,8 @@ requestStoreMulti = "client\functions\requestStoreMulti.sqf" call mf_compile;
 startMaldenStorm = "client\choco\startMaldenStorm.sqf" call mf_compile;
 // progression 
 a_unlock1 = "client\choco\unlock\a_unlock1_swimming.sqf" call mf_compile;
+a_unlock2 = "client\choco\unlock\a_unlock2_bitePlayer.sqf" call mf_compile;
+a_unlock3 = "client\choco\unlock\a_unlock3_plantBomb.sqf" call mf_compile;
 a_unlock4 = "client\choco\unlock\a_unlock4_seagull.sqf" call mf_compile;
 a_unlock5 = "client\choco\unlock\a_unlock5_flyMode.sqf" call mf_compile;
 

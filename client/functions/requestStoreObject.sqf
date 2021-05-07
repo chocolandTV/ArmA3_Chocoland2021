@@ -17,7 +17,7 @@ _player setVariable ["cmoney", _playerMoney - _price, true];
 [_player, -_price] call A3W_fnc_setCMoney;
 [] spawn fn_savePlayerData;
 if(_this select 0 == "Goat_Cart") exitWith{call goatCart;};
-diag_log format ["Parastore Spawning ID , PRICE , PLAYER -  %1,  %2 , %3",_this select 0, _this select 1, name _player];
+diag_log format ["Parastore Spawning ID %1, PRICE %2, PLAYER %3",_this select 0, _this select 1, name player];
 _dir = getDir player;
 _pos = getPosATL _player;
 _pos = [(_pos select 0)+50*sin(_dir),(_pos select 1)+50*cos(_dir),(_pos select 2)+150];
@@ -59,7 +59,7 @@ _para allowDamage false;
 while {(getPos _obj select 2) > 2 &&(alive _para)&&(alive _obj)}
 do{
 _para setVectorUp [0,0,1];
-_para setVelocity [0, 0, (velocity _Parachute select 2)*1.07];
+_para setVelocity [0, 0, (velocity _para select 2)*1.07];
 sleep 0.1;
 };
 deTach _obj;

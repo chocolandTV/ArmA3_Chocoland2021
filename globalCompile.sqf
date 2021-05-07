@@ -80,7 +80,6 @@ A3W_fnc_killBroadcast = "client\systems\killFeed\fn_killBroadcast.sqf" call mf_c
 A3W_fnc_killFeedEntry = "client\systems\killFeed\fn_killFeedEntry.sqf" call mf_compile;
 A3W_fnc_processTransaction = [_serverFunc, "processTransaction.sqf"] call mf_compile;
 // choco Function to global
-Choco_fnc_takeNuclearStrike = "client\items\nuclearStrike\fn_takeNuclearStrike.sqf" call mf_compile;
 A3W_fnc_pushVehicle = [_serverFunc, "pushVehicle.sqf"] call mf_compile;
 A3W_fnc_setCMoney = [_serverFunc, "fn_setCMoney.sqf"] call mf_compile;
 A3W_fnc_setVarServer = [_serverFunc, "fn_setVarServer.sqf"] call mf_compile;

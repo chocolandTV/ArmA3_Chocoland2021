@@ -22,11 +22,11 @@ private ["_minimumFogDecay", "_maximumFogDecay", "_minimumFogBase", "_maximumFog
 
 // Minimum time in minutes for the weather (fog and overcast) to change. Must be greater than or equal to 1 and less than or equal to
 // _maxWeatherChangeTimeMin. When weather changes, it is fog OR overcast that changes, not both at the same time. (Suggested value: 10).
-_minWeatherChangeTimeMin = 15;
+_minWeatherChangeTimeMin = 2;
 
 // Maximum time in minutes for the weather (fog and overcast) to change. Must be greater than or equal to _minWeatherChangeTimeMin.
 // (Suggested value: 20).
-_maxWeatherChangeTimeMin = 30;
+_maxWeatherChangeTimeMin = 10;
 
 // Minimum time in minutes that weather (fog and overcast) stays constant between weather changes. Must be less than or equal to 0 and
 // greater than or equal to _minWeatherChangeTimeMin. (Suggested value: 5).
@@ -112,11 +112,6 @@ drn_DynamicWeather_DebugTextEventArgs = []; // Empty
 	drn_DynamicWeather_DebugTextEventArgs call drn_fnc_DynamicWeather_ShowDebugTextLocal;
 };
 
-/*
- * Summary: Shows debug text on local client.
- * Arguments:
- *   _text: Debug text.
- */
 drn_fnc_DynamicWeather_ShowDebugTextLocal = {
 	private ["_minutes", "_seconds"];
 
@@ -129,11 +124,6 @@ drn_fnc_DynamicWeather_ShowDebugTextLocal = {
 	diag_log ((str _minutes + ":" + str _seconds) + " Debug: " + (_this select 0));
 };
 
-/*
- * Summary: Shows debug text on all clients.
- * Arguments:
- *   _text: Debug text.
- */
 drn_fnc_DynamicWeather_ShowDebugTextAllClients = {
 	drn_DynamicWeather_DebugTextEventArgs = _this;
 	publicVariable "drn_DynamicWeather_DebugTextEventArgs";
@@ -147,7 +137,7 @@ if (_debug) then {
 drn_DynamicWeatherEventArgs = []; // [current overcast, current fog, current rain, current weather change ("OVERCAST", "FOG" or ""), target weather value, time until weather completion (in seconds), current wind x, current wind z]
 drn_AskServerDynamicWeatherEventArgs = [];
 
-drn_fnc_overcastOdds = { ((9/8) * (_this ^ (5/2))) min 1 }; // https://www.desmos.com/calculator/sp7zsxckhn
+drn_fnc_overcastOdds = { ((9/8) * (_this ^ (5/2))) min 1 }; 
 drn_fnc_fogOdds =
 {
 	params ["_currFog", "_maxFog"];

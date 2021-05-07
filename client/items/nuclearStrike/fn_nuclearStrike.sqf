@@ -14,5 +14,6 @@ for "_i" from 1 to 100 do
 	
 };
 openMap true;
-ClickOnMapEH = addMissionEventHandler ["MapSingleClick", {[(_this select 1)] spawn nuclearStrike; removeMissionEventHandler ["MapSingleClick",ClickOnMapEH];}];
-
+ClickOnMapEH = addMissionEventHandler ["MapSingleClick", {[(_this select 1)] spawn nuclearStrike;openMap false;}];
+waitUntil {!visibleMap}; // Wait until map is closed, either by ESC/M or map click
+removeMissionEventHandler ["MapSingleClick",ClickOnMapEH]; // removes eventhandler so it doesn´t stack and spawn more than one vehicle

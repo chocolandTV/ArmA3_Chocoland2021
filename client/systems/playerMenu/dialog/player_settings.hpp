@@ -19,7 +19,7 @@ class playerSettings {
 
 			moving = true;
 			x = 0.0; y = 0.1;
-			w = .745; h = 0.65;
+			w = .745; h = 1.2;
 		};
 
 		class TopBar: IGUIBack
@@ -108,6 +108,27 @@ class playerSettings {
 			x = 0.52; y = 0.69;
 			w = 0.225; h = 0.03;
 		};
+		class bountyText : w_RscText {
+			idc = -1;
+			text = "Bounty Unlock Progression";
+			sizeEx = 0.040;
+			x = 0.2; y = 0.75;
+			w = 0.36; h = 0.04;
+		};
+		class baseBuilderText : w_RscText {
+			idc = -1;
+			text = "Basebuilder Unlock Progression";
+			sizeEx = 0.040;
+			x = 0.2; y = 0.90;
+			w = 0.36; h = 0.04;
+		};
+		class animalText : w_RscText {
+			idc = -1;
+			text = "Animal Unlock Progression";
+			sizeEx = 0.040;
+			x = 0.2; y = 1.10;
+			w = 0.36; h = 0.04;
+		};
 	};
 
 	class controls {
@@ -163,38 +184,6 @@ class playerSettings {
 			x = 0.158; y = 0.66;
 			w = 0.225; h = 0.033 * safezoneH;
 		};
-
-		/*class btnDistanceNear : w_RscButton {
-			idc = -1;
-			text = "Near";
-			onButtonClick = "setViewDistance 1100;";
-			x = 0.02; y = 0.43;
-			w = 0.125; h = 0.033 * safezoneH;
-		};
-
-		class btnDistanceMedium : w_RscButton {
-			idc = -1;
-			text = "Medium";
-			onButtonClick = "setViewDistance 2200;";
-			x = 0.02; y = 0.5;
-			w = 0.125; h = 0.033 * safezoneH;
-		};
-
-		class btnDistanceFar : w_RscButton {
-			idc = -1;
-			text = "Far";
-			onButtonClick = "setViewDistance 3300;";
-			x = 0.02; y = 0.57;
-			w = 0.125; h = 0.033 * safezoneH;
-		};
-
-		class btnDistanceInsane : w_RscButton {
-			text = "Insane";
-			onButtonClick = "setViewDistance 5000;";
-			x = 0.02; y = 0.60;
-			w = 0.125; h = 0.033 * safezoneH;
-		};*/
-
 		class btnDistanceCHVD : w_RscButton {
 			idc = -1;
 			text = "Viewdist.";
@@ -202,7 +191,6 @@ class playerSettings {
 			x = 0.02; y = 0.57;
 			w = 0.125; h = 0.033 * safezoneH;
 		};
-
 		class btnKillfeed : w_RscButton {
 			idc = -1;
 			text = "Killfeed";
@@ -213,10 +201,114 @@ class playerSettings {
 		class btnKillfeed2 : w_RscButton {
 			idc = -1;
 			text = "Disable Infos";
-			onButtonClick = "NOINFO = true;";
-			x = 0.330; y = 0.57;
-			w = 0.195; h = 0.033 * safezoneH;
+			onButtonClick = "NOINFO = true;hint'Info disabled';";
+			x = 0.25; y = 0.57;
+			w = 0.15; h = 0.033 * safezoneH;
 		};
-		
+		class b_unlock_1 : w_RscButton {
+			idc = bountyu1;
+			text = "Keep Weapon";
+			onButtonClick = "call b_unlock1";
+			x = 0.00; y = 0.81;
+			w = 0.14; h = 0.033 * safezoneH;
+		};
+		class b_unlock_2 : w_RscButton {
+			idc = bountyu2;
+			text = "smart ammo buy";
+			onButtonClick = "call b_unlock2";
+			x = 0.10; y = 0.81;
+			w = 0.15; h = 0.033 * safezoneH;
+		};
+		class b_unlock_3 : w_RscButton {
+			idc = bountyu3;
+			text = "satellite Camera";
+			onButtonClick = "call b_unlock3";
+			x = 0.24; y = 0.81;
+			w = 0.17; h = 0.033 * safezoneH;
+		};
+		class b_unlock_4 : w_RscButton {
+			idc = bountyu4;
+			text = "attach menu";
+			onButtonClick = "call b_unlock4";
+			x = 0.40; y = 0.81;
+			w = 0.18; h = 0.033 * safezoneH;
+		};
+		class b_unlock_5 : w_RscButton {
+			idc = bountyu5;
+			text = "infinite Ammunition";
+			onButtonClick = "call b_unlock5";
+			x = 0.56; y = 0.81;
+			w = 0.18; h = 0.033 * safezoneH;
+		};
+		class c_unlock_1 : w_RscButton {
+			idc = basebuilderu1;
+			text = "Basecore";
+			onButtonClick = "call c_unlock1";
+			x = 0.00; y = 0.98;
+			w = 0.14; h = 0.033 * safezoneH;
+		};
+		class c_unlock_2 : w_RscButton {
+			idc = basebuilderu2;
+			text = "Multibuy";
+			onButtonClick = "call c_unlock2";
+			x = 0.1; y = 0.980;
+			w = 0.15; h = 0.033 * safezoneH;
+		};
+		class c_unlock_3 : w_RscButton {
+			idc = basebuilderu3;
+			text = "auto -flak";
+			onButtonClick = "call c_unlock3";
+			x = 0.24; y = 0.98;
+			w = 0.17; h = 0.033 * safezoneH;
+		};
+		class c_unlock_4 : w_RscButton {
+			idc = basebuilderu4;
+			text = "1ClickBase";
+			onButtonClick = "call c_unlock4";
+			x = 0.40; y = 0.98;
+			w = 0.18; h = 0.033 * safezoneH;
+		};
+		class c_unlock_5 : w_RscButton {
+			idc = basebuilderu5;
+			text = "invisible";
+			onButtonClick = "call c_unlock5";
+			x = 0.56; y = 0.98;
+			w = 0.18; h = 0.033 * safezoneH;
+		};
+		class a_unlock_1 : w_RscButton {
+			idc = animalu1;
+			text = "Jumping";
+			onButtonClick = "call a_unlock1";
+			x = 0.00; y = 1.15;
+			w = 0.14; h = 0.033 * safezoneH;
+		};
+		class a_unlock_2 : w_RscButton {
+			idc = animalu2;
+			text = "Bite";
+			onButtonClick = "call a_unlock2";
+			x = 0.10; y = 1.15;
+			w = 0.15; h = 0.033 * safezoneH;
+		};
+		class a_unlock_3 : w_RscButton {
+			idc = animalu3;
+			text = "plant bombs";
+			onButtonClick = "call a_unlock3";
+			x = 0.24; y = 1.15;
+			w = 0.18; h = 0.033 * safezoneH;
+		};
+		class a_unlock_4 : w_RscButton {
+			idc = animalu4;
+			text = "become seagull";
+			onButtonClick = "call a_unlock4";
+			x = 0.40; y = 1.15;
+			w = 0.18; h = 0.033 * safezoneH;
+		};
+		class a_unlock_5 : w_RscButton {
+			idc = animalu5;
+			text = "fly mode";
+			onButtonClick = "call a_unlock5";
+			x = 0.56; y = 1.15;
+			w = 0.18; h = 0.033 * safezoneH;
+		};
 	};
 };

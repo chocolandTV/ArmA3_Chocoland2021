@@ -18,7 +18,8 @@ _obj allowdamage true;
 titleText ["***********<br/><t color='#ff0000' size='2'>Requested Carrier / Destroyer delievered!</t><br/>***********", "PLAIN DOWN", -1, true, true];
 };
 openMap true;
-ClickOnMapEH = addMissionEventHandler ["MapSingleClick", {[(_this select 1)] spawn _createShip; removeMissionEventHandler ["MapSingleClick",ClickOnMapEH];}];
-
+ClickOnMapEH = addMissionEventHandler ["MapSingleClick", {[(_this select 1)] spawn _createShip;openMap false;}];
+waitUntil {!visibleMap}; // Wait until map is closed, either by ESC/M or map click
+removeMissionEventHandler ["MapSingleClick",ClickOnMapEH]; // removes eventhandler so it doesn´t stack and spawn more than one vehicle
 
 

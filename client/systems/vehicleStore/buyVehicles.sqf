@@ -4,8 +4,6 @@
 scriptName "buyVehicles";
 #include "dialog\vehiclestoreDefines.hpp";
 
-storePurchaseHandle = _this spawn
-{
 	disableSerialization;
 
 	private ["_switch", "_playerMoney", "_price", "_dialog", "_playerMoneyText", "_itemlist", "_itemIndex", "_itemText", "_itemData", "_colorlist", "_colorIndex", "_colorText", "_colorData", "_applyVehProperties", "_class", "_price", "_requestKey", "_vehicle"];
@@ -33,7 +31,7 @@ storePurchaseHandle = _this spawn
 
 	_partList = _dialog displayCtrl vehshop_part_list;
 	_defPartsChk = _dialog displayCtrl vehshop_defparts_checkbox;
-	_animList = []; // ["anim1", 1, "anim2", 0, ...] - formatted for BIS_fnc_initVehicle
+	_animList = []; 
 
 	if (!cbChecked _defPartsChk) then
 	{
@@ -76,13 +74,11 @@ storePurchaseHandle = _this spawn
 		if(!MULTIBUY)then 
 		{	
 			closeDialog 0;
-			[_class, _price, _colorData] call requestStoreObject;};
-		}else
+			[_class, _price, _colorData] call requestStoreObject;
+		}
+		else
 		{
-			[_class, _price, _colorData] call requestStoreMulti;};
+			[_class, _price, _colorData] call requestStoreMulti;
 		};
 	};
 
-sleep 0.01; // double-click protection
-};
-storePurchaseHandle = nil;

@@ -512,6 +512,12 @@ objectList =
 	"Land_GarbageContainer_closed_F",
 	"Land_Football_01_F",
 	"Land_GarbageBarrel_01_english_F",
+	"Land_CastleRuins_01_bastion_F",
+    "Land_CastleRuins_01_wall_10m_F",
+    "Land_CastleRuins_01_wall_d_L_F",
+    "Land_CastleRuins_01_wall_d_R_F",
+	"Land_Dome_Big_F",
+	"Land_Dome_Small_F",
 	"Land_VR_Slope_01_F"
 	
 ];

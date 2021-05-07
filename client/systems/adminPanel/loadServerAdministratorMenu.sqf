@@ -27,9 +27,10 @@ if ([_uid, 3] call isAdmin) then {
 	                "Debug Menu",
 					"Object Search",
 	                "Toggle God-mode",
-					"Access Proving Grounds",
+					"Proving Grounds",
 					"Show Server FPS",
-					"Drop Supply"
+					"Delete Object",
+					"Max Perks for 10min"
 	];
 
 	{

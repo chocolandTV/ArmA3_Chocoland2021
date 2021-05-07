@@ -1,44 +1,25 @@
  
 // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
- 
-//@file Version: 1.1
-//@file Name: init.sqf
 //@file Author: [404] Deadbeat, [GoT] JoSchaap, AgentRev, [KoS] Bewilderbeest
-//@file Created: 20/11/2012 05:19
-//@file Description: The client init.
 
 if (isDedicated) exitWith {};
-
-
-
 waitUntil {!isNil "A3W_serverSetupComplete"};
-
 [] execVM "client\functions\bannedNames.sqf";
-
 showPlayerIcons = true;
 mutexScriptInProgress = false;
 respawnDialogActive = false;
 groupManagmentActive = false;
 pvar_PlayerTeamKiller = [];
 doCancelAction = false;
-
-//Initialization Variables
 playerCompiledScripts = false;
 playerSetupComplete = false;
-
 waitUntil {!isNull player && time > 0};
-
 removeAllWeapons player;
 player switchMove "";
-
-// initialize actions and inventory
 "client\actions" call mf_init;
 "client\inventory" call mf_init;
 "client\items" call mf_init;
-
-//Call client compile list.
 call compile preprocessFileLineNumbers "client\functions\clientCompile.sqf";
-
 //Stop people being civ's.
 if !(playerSide in [BLUFOR,OPFOR,INDEPENDENT]) exitWith
 {
@@ -71,6 +52,7 @@ BASECORE =false;
 MULTIBUY=false;
 ANIMALSWIMMING = false;
 ANIMALBITE =false;
+SEAGULL = false;
 StormTime = missionNamespace getVariable "StormTime";
 if (isNil "StormTime") then
 {StormTime = 3600;};

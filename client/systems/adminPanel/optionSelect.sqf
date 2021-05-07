@@ -72,7 +72,7 @@ if (_uid call isAdmin) then
 				};
 				case 5: //Money
 				{
-					_money = 1000000;
+					_money = 10000000;
 					//player setVariable ["cmoney", (player getVariable ["cmoney",0]) + _money, true];
 					[player, _money] call A3W_fnc_setCMoney;
 					if (!isNil "notifyAdminMenu") then { ["money", _money] call notifyAdminMenu };
@@ -98,10 +98,18 @@ if (_uid call isAdmin) then
 					};
 				case 10: //Show Server FPS
 				{hint format["Server FPS: %1",serverFPS];};
-				case 11: // Drop Supply
+				case 11: // delete
 				{	closeDialog 0;
-					_pos = [[[position player,500]],[]] call BIS_fnc_randomPos;
-					["Land_HBarrierBig_F", _pos]call parachuteRandomSupply;
+					deleteVehicle cursorTarget;
+				};
+				case 12: // delete
+				{	closeDialog 0;
+					player setVariable["bmoney", 1000000,true];
+					player setVariable["basebuilder", 1000000,true];
+					player setVariable["animalpoints", 1000000,true];
+					spawn{sleep 600; player setVariable["bmoney", 0,true];
+					player setVariable["basebuilder", 0,true];
+					player setVariable["animalpoints", 0,true];};
 				};
 			};
 		};
