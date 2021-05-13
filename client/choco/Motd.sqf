@@ -17,7 +17,7 @@ _messageArray = [
 sleep 120;
 while {true} do
 { 
-hint parseText format	["<t color='#FFFFFF' shadow='2' size='1.75'>Chocoland</t><br/>" +
+hint parseText format	["<t color='#FFFFFF' shadow='2' size='1.75'>Maldenstorm 2035</t><br/>" +
 			"<t color='#FFFFFF'>------------------------------</t><br/>" +
 			"<t color='#FFFFFF' size='1.0'>%1</t>",selectRandom _messageArray];
 [10000,0]call getMoneyReward;

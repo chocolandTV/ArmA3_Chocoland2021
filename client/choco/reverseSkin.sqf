@@ -37,5 +37,7 @@ player setVariable ["cmoney", (saveData select 0),true];
 player setVariable ["bmoney", (saveData select 1),true];
 player setVariable ["basebuilder", (saveData select 2),true];
 player setVariable ["animalpoints", (saveData select 3),true];
-
+player hideObject false;
+chocostring=  format["%1 hideObject false;",player];
+publicVariable"chocostring";
 diag_log format ["Player %1 is back to normal from Animal", name player];

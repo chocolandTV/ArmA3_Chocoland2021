@@ -9,7 +9,7 @@
 
 #include "dialog\genstoreDefines.sqf";
 disableSerialization;
-private ["_switch", "_dialog", "_itemlist", "_itemlisttext", "_itemDesc", "_showPicture", "_itemsArray", "_playerSideNum", "_parentCfg", "_weapon", "_picture", "_listIndex", "_showItem", "_factionCfg", "_faction", "_isUniform", "_sideCfg", "_side"];
+private ["_warnMessage","_switch", "_dialog", "_itemlist", "_itemlisttext", "_itemDesc", "_showPicture", "_itemsArray", "_playerSideNum", "_parentCfg", "_weapon", "_picture", "_listIndex", "_showItem", "_factionCfg", "_faction", "_isUniform", "_sideCfg", "_side"];
 _switch = _this select 0;
 
 // Grab access to the controls
@@ -17,7 +17,8 @@ _dialog = findDisplay genstore_DIALOG;
 _itemlist = _dialog displayCtrl genstore_item_list;
 _itemlisttext = _dialog displayCtrl genstore_item_TEXT;
 _itemDesc = _dialog displayCtrl genstore_item_desc;
-
+_warnMessage = _dialog displayCtrl genstore_sort;
+_warnMessage = ctrlText _warnMessage;
 //Clear the list
 lbClear _itemlist;
 _itemlist lbSetCurSel -1;
@@ -82,10 +83,25 @@ switch(_switch) do
 	};
 	case 7:
 	{
-		[missionNamespace, "market", ""] call BIS_fnc_getServerVariable;
-		_itemsArray = call compile market;
+		_itemsArray= missionNamespace getVariable["market", ""];
 		_showPicture = false;
 	};
+	case 8:
+	{
+	_itemsArray = [];
+		{
+
+			if([_warnMessage, _x select 0]call BIS_fnc_inString)then
+			{
+				
+				_listIndex = _itemlist lbAdd format ["%1",  _x select 0];
+				_itemlist lbSetData [_listIndex, _x select 1];
+			};
+		}forEach call genObjectsArray;
+		_showPicture = false;
+		
+	};
+	
 	default
 	{
 		_itemsArray = [];

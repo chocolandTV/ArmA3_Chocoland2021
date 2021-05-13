@@ -1,10 +1,11 @@
 
  _sandStormDmg = {
-
-_var1= player getVariable["bmoney", 0]; 
-_var2= player getVariable["animalpoints", 0]; 
-_var3= player getVariable["basebuilder", 0]; 
-_endvar = (_var1 + _var2 + _var3) / 1800;
+private["_var1","_var2","_var3","_endvar"];
+params ["_time"];
+_var1= (player getVariable["bmoney", 0]) / 50000; 
+_var2= (player getVariable["animalpoints", 0]) / 50000; 
+_var3= (player getVariable["basebuilder", 0]) / 50000; 
+_endvar = (_var1 + _var2 + _var3);
  for "_i" from 1 to 60 do { 
 		
 		 _object=nearestObject [player, "house"]; 
@@ -16,12 +17,13 @@ _endvar = (_var1 + _var2 + _var3) / 1800;
 		 };
  };
  //start new Malden Storm 
-[ 
- parseText "<t size='2'>Storm incoming - get inside</t>", 
- parseText "because of the climate crisis, the storm comes back to Malden. The gouverment cant handle, get inside. \\\\  12.048 deaths today" 
-] spawn BIS_fnc_AAN;
+hint parseText format	["<t color='#FFFFFF' shadow='2' size='1.75'>Storm incoming - get inside</t><br/>" +
+"<t color='#FFFFFF'>------------------------------</t><br/>" +
+"<t color='#FFFFFF' size='1.0'>because of the climate crisis, the storm comes back to Malden. The gouverment cant handle, get inside.</t>"];
+titleText ["***********<br/><t color='#ff0000' size='2'>Storm incoming - get inside!</t><br/>because of the climate crisis, the storm comes back to Malden. The gouverment cant handle, get inside.", "PLAIN DOWN", -1, true, true];
+
 sleep 10;
-(uiNamespace getVariable "BIS_AAN") closeDisplay 1;
-[]spawn _sandStormDmg;
+
+[] execVM "AL_dust_storm\alias_duststorm_effect.sqf";
 
 

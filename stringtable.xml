@@ -34,7 +34,7 @@
 	</Package>
 	<Package name="WelcomeMessage">
 		<Key ID="STR_WL_WelcomeToWasteland">
-			<English>&lt;t color='#FF8000' size='2.5' &gt;Arma3.Chocoland.tv&lt;/t&gt;</English>
+			<English>&lt;t color='#FF8000' size='2.5' &gt;Maldenstorm 2035&lt;/t&gt;</English>
 		</Key>
 		<Key ID="STR_WL_YouAreInTeam">
 			<English>&lt;t color='#FFFFFF' size='1.5' &gt;* Feel free to Attack everone, careful the wrong Animal will exlode.&lt;br/&gt;* 3in1 choose you Playstyle -> Basebuilder, Bounty Hunter or Hide+Seek.&gt;FEATURES:&lt;/t&gt;&lt;br/&gt;* &lt;t color="#FF1111"&gt;Parachutestore&lt;/t&gt;&lt;br/&gt;*&lt;br/&gt;* Supply Drops and Missions.&lt;br/&gt;* Progression get more functions and money when you train your PERK.&lt;/t&gt;</English>

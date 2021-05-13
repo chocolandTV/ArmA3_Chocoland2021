@@ -131,7 +131,7 @@ while {true} do
 	// Icons in bottom right
 
 	_strArray = [];
-	 _strArray pushBack format ["%1 <img size='0.7' image='client\icons\storm.icon.paa'/>", [(StormTime- serverTime)/3600, "HH:MM:SS"] call BIS_fnc_timeToString];
+	 _strArray pushBack format ["%1 <img size='0.7' image='client\icons\storm.icon.paa'/>", [((missionNamespace getVariable "StormTime")- serverTime)/3600, "HH:MM:SS"] call BIS_fnc_timeToString];
 	_strArray pushBack format ["%1 <img size='0.7' image='client\icons\money.paa'/>", [player getVariable ["cmoney", 0]] call fn_numbersText];
 		_strArray pushBack format ["%1 <img size='0.7' image='\A3\ui_f\data\igui\cfg\cursors\leader_ca.paa'/>", [player getVariable ["bmoney", 0]] call fn_numbersText];
 		_strArray pushBack format ["%1 <img size='0.7' image='\A3\ui_f\data\igui\cfg\simpletasks\types\container_ca.paa'/>",[player getVariable ["basebuilder", 0]] call fn_numbersText];

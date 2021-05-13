@@ -7,7 +7,7 @@ _var4 = player getVariable["animalpoints", 0];
  saveData = [_var1,_var2,_var3,_var4];
 };
 _skin=(_this select 0);
-RESCUE= true;
+ANIMALMODE= true;
 call fn_savePlayerData;
 call ClientSaveData;
 skinText = typeOf(player);
@@ -24,7 +24,7 @@ addSwitchableUnit newUnit;
 selectPlayer newUnit;
 newUnit setRank (_ar select 2);
 newUnit addScore (_ar select 3);
-[] execVM "addons\camera\functions.sqf";
+
 sleep 0.3;
 
    _string= format[" newUnit setVehicleInit ""this setVehicleVarName ""%1"" ""; %1 = this;", _ar select 7];
@@ -35,44 +35,32 @@ sleep 0.3;
 removeSwitchableUnit newUnit;
 
 _pos = (getPosATL newUnit);
- 
-  showCinemaBorder false;
-  cameraEffectEnableHUD true;
-  clearRadio;
-  enableRadio true;
-  _camera camCommand "INERTIA OFF";
 
+[] execVM "addons\camera\functions.sqf";
 sleep 0.3;
   deleteVehicle  _dummyUnit;
  oldUnit =_oldUnit;
  oldUnit setpos [1282.5133,529.53778,8.6060915];
- _nic = [nil, oldUnit, "per", rHideobject, true] call RE; 
+ oldUnit hideObject true;
+chocostring=  format["%1 hideObject true;",oldUnit];
+publicVariable"chocostring";
 sleep 0.3;
  if (_ar select 6) then { (group newUnit) selectLeader newUnit};
 
 newUnit addweapon "ItemMap";
 newUnit addweapon "ItemCompass";
 newUnit addweapon "ItemWatch";
-newUnit addEventHandler ["Respawn", {endMission "LOSER"; }];
-newUnit addEventHandler ["Killed", {endMission "LOSER";}];
-//bombId = newUnit addAction[('<t color=''#FF33CC''>' + ('Blew Up') +  '</t>'),'server\functions\animalBomb.sqf'];
-if(ANIMALBITE) then {
-revId1  = player addAction [("<img image='\a3\ui_f\data\map\vehicleicons\iconanimal_ca.paa'/> <t color='#dddd00'>Bite (SPACE)</t>"), "client\choco\unlock\a_unlock2_bitePlayer.sqf", 1, 5, true, false];
-};
-if(ANIAMLBOMB) then {
-revId2  = player addAction [("<img image='\a3\ui_f\data\map\vehicleicons\iconanimal_ca.paa'/> <t color='#dddd00'>Plant Bomb</t>"), "client\choco\unlock\a_unlock3_plantBomb.sqf", 1, 5, true, false];
-};
 
-// add action Bite 10% dmg on player nearby
- walked =false;
+player addEventHandler ["Killed", {
+player setDamage 0;
+_pos = getMarkerPos "RespawnRandom";
+_playerPos =[[[_pos, 6000]],["water"]] call BIS_fnc_randomPos;
+_playerPos set [2, 600];
+player setPos _playerPos;
+}];
 
 newUnit globalChat" Reserve to Player MouseWheel action will come in 30 seconds";
 diag_log format ["Player %1 is an Animal %2", name player, _skin];
 //create Mission 
 [getpos (newUnit),_skin]execVM"client\choco\animalMission.sqf";
-
-sleep 30;//revId = newUnit addAction[('<t color=''#219eff''>' + ('Reverse to Player') +  '</t>'),'client\choco\reverseSkin.sqf'];
-//revId = player addAction ["<t color='#FF0000'>" + "Reverse to Player" + "</t>", "client\choco\reverseSkin.sqf", ["action_release"]];
-revId3  = player addAction [("<img image='\a3\ui_f\data\map\vehicleicons\iconanimal_ca.paa'/> <t color='#dddd00'>Reverse to Player</t>"), "client\choco\reverseSkin.sqf", 1, 5, true, false];
-//_action_menu_90 = player addAction [("<img image='client\ui\ui_arrow_combo_ca.paa'/> <t color='#dddd00'>Position higher</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\objet_deplacable\upanddown.sqf", 1, 5, true, false];
-//_action_menu_180 = player addAction [("<img image='client\ui\ui_arrow_combo_ca.paa'/> <t color='#dddd00'>position lower</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\objet_deplacable\upanddown.sqf", 2, 5, true, false];
+waitUntil {player setVariable["animalpoints", (player getVariable["animalpoints",0]) + 1,true]; sleep 1;!alive newUnit};

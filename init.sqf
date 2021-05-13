@@ -1,4 +1,12 @@
  // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
+#include "debugFlag.hpp"
+
+#ifdef A3W_DEBUG
+#define DEBUG true
+#else
+#define DEBUG false
+#endif
+
 enableSaving [false, false];
 A3W_sessionTimeStart = diag_tickTime;
 
@@ -22,12 +30,12 @@ if (isNull player) then { X_JIP = true };
 
 A3W_scriptThreads = [];
 
-[false] call compile preprocessFileLineNumbers "globalCompile.sqf";
+[DEBUG] call compile preprocessFileLineNumbers "globalCompile.sqf";
 
 //init Wasteland Core
 [] execVM "config.sqf";
+[] execVM "storeConfig.sqf"; // Separated as its now v large
 [] execVM "briefing.sqf";
-[] execVM "storeConfig.sqf"; 
 
 
 if (!isDedicated) then

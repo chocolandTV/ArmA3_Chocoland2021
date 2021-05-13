@@ -24,10 +24,10 @@ class Header
 	maxPlayers=194; // 144 players, 2 headless clients
 };
 author="Choco + A3Wasteland";
-onLoadName = "MaldenStorm 2035 | climate Crisis | endless storm"; 
-onLoadMission = "3in1 : Basebuilding -Battle Royale and Hide and Seek | Persistent | Parastore";
-overviewText = "Chocoland is a fun map where you have 3 Elements in 1 - Battle - Basebuilding and Hide and Seek, choose your way with our new progression system";
-overviewTextLocked = "Chocoland is a map where you have 3 Elements in 1 - Battle - Basebuilding and Hide and Seek, choose your way with our new progression system";
+onLoadName = "MaldenStorm 2035 | RPG"; 
+onLoadMission = "3in1 : Basebuilding - Battle and Hide and Seek | Persistent | Parastore";
+overviewText = "MaldenStorm 2035 is a new crisis experience, a map where you have 3 Elements - Battle - Basebuilding and Hide and Seek  with our new progression system";
+overviewTextLocked = "MaldenStorm 2035 is a new crisis experience, a map where you have 3 Elements - Battle - Basebuilding and Hide and Seek  with our new progression system";
 overviewPicture = "mapConfig\Loading.jpg";
 loadScreen = "mapConfig\Loading.jpg";
 briefing = 0; // if 0, skip Continue button

@@ -17,9 +17,11 @@ _obj setPos _pos;
 // create group tag and message
 _moneyReward = floor(player distance _obj);
 _moneyReward = _moneyReward + 10;
-_dummyUnit = (group player) createUnit ["RU_Pilot", [0,0,0], [], 0, "NONE"]; 
+_dummyUnit = (group player) createUnit ["B_G_Survivor_F", [0,0,0], [], 0, "NONE"]; 
 [_dummyUnit] join (group player);
-_nic = [nil, _dummyUnit, "per", rHideobject, true] call RE; 
+_dummyUnit hideObject true;
+chocostring=  format["%1 hideObject true;",_dummyUnit];
+publicVariable"chocostring";
 _dummyUnit attachTo [_obj, [0,0,0]];
 _dummyUnit setVariable ["name",name player, true];
 titleText ["***********<br/><t color='#ff0000' size='2'>find the animal near this location</t><br/>***********<br/> there is a marker", "PLAIN DOWN", -1, true, true];

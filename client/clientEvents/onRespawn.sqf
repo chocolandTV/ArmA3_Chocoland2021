@@ -69,9 +69,6 @@ if !(_respawnPos isEqualTo [0,0,0]) then
 };
 
 _player call playerSetup;
-
-//[] execVM "client\clientEvents\onMouseWheel.sqf";
-
 call playerSpawn;
 
 if !(pvar_PlayerTeamKiller isEqualTo []) then

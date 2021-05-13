@@ -40,7 +40,7 @@ if (isNil "_itemData") exitWith
 
 _itemData params ["_vehName", "_vehClass", "_price"];
 
-_vehText ctrlSetText format ["%1Price: €%2", [_vehName + "\n", ""] select isNil "_repaint", [_price*2] call fn_numbersText];
+_vehText ctrlSetText format ["%1Price: €%2", [_vehName + "\n", ""] select isNil "_repaint", [_price] call fn_numbersText];
 
 _vehCfg = configFile >> "CfgVehicles" >> _vehClass;
 

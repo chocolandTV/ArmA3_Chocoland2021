@@ -61,12 +61,12 @@ sleep 0.1;
 	};
 };
 
-chocostring= "call effectStorm;";
+chocostring= "spawn effectStorm;";
 publicVariable"chocostring";
 
 if (_dust_wall) then 
 {
-	_rand_pl = [] spawn huntStorm;
+	_rand_pl = [] execVM "AL_dust_storm\alias_hunt.sqf";
 	waitUntil {scriptDone _rand_pl};
 	_pozobcj = hunt_alias getRelPos [800,(_direction_duststorm-180)];
 	stormsource = "Land_HelipadEmpty_F" createVehicle _pozobcj;
@@ -75,7 +75,7 @@ if (_dust_wall) then
 	if ((_direction_duststorm<225)or(_direction_duststorm>135)) then {_x_dev=600; _y_dev = 60};
 	if ((_direction_duststorm<=135)&&(_direction_duststorm>=45)) then {_x_dev=60; _y_dev = 600};
 	if ((_direction_duststorm>=225)&&(_direction_duststorm<=315)) then {_x_dev=60; _y_dev = 600};
-	chocostring =format["[%1,%2,%3,%4]call dustWallStorm;",stormsource,_duration_duststorm,_x_dev,_y_dev];
+	chocostring =format["[%1,%2,%3,%4]spawn dustWallStorm;",stormsource,_duration_duststorm,_x_dev,_y_dev];
 	publicVariable="chocostring";
 	[stormsource] spawn 
 	{
@@ -89,8 +89,7 @@ if (_dust_wall) then
 			sleep 40;
 		};
 	};
-	if (_lethal_wall) then {
-	[stormsource,_x_dev,_y_dev] spawn lethalWallStorm; };
+	if (_lethal_wall) then {[_stormsource,_x_dev,_y_dev] execvm "AL_dust_storm\lethal_wall.sqf"};
 	[stormsource,_direction_duststorm] spawn {
 	private ["stormsource","_direction_duststorm"];
 	stormsource = _this select 0; _direction_duststorm = _this select 1;
@@ -126,7 +125,7 @@ if (_effect_on_objects) then {
 
 	while {al_duststorm_on} do {
 		sleep 1;
-		_rand_pl = []spawn huntStorm;
+		_rand_pl = [] execVM "AL_dust_storm\alias_hunt.sqf";
 		waitUntil {scriptDone _rand_pl};
 
 	// interval object blow
@@ -176,6 +175,6 @@ while {al_duststorm_on} do {
 	_rafale = ["rafala_1","sandstorm","rafala_4_dr","rafala_5_st"] call BIS_fnc_selectRandom;
 	chocostring = format[" playSound ""%1"";",_rafale];
 	publicVariable"chocostring";
-	sleep 60+random 120;
+	sleep 60 + random 120;
 };
 deleteVehicle stormsource;

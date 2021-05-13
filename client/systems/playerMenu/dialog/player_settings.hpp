@@ -243,7 +243,7 @@ class playerSettings {
 		class c_unlock_1 : w_RscButton {
 			idc = basebuilderu1;
 			text = "Basecore";
-			onButtonClick = "call c_unlock1";
+			onButtonClick = "[1]call c_unlock1";
 			x = 0.00; y = 0.98;
 			w = 0.14; h = 0.033 * safezoneH;
 		};

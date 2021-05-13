@@ -56,20 +56,6 @@ class genstored
 			h = GenStoreTopBar_H;
 		};
 
-		/*
-		class PlayerMoneyText: w_RscText
-		{
-			idc = genstore_money;
-			text = "Cash:";
-			sizeEx = 0.04 * TEXT_SCALE;
-
-			x = GenStoreMainBG_X + (0.6033 * SZ_SCALE);
-			y = GenStoreMainBG_Y + (0.005 * SZ_SCALE);
-			w = 0.1126 * SZ_SCALE;
-			h = 0.0448 * SZ_SCALE;
-		};
-		*/
-
 		class ItemSelectedPrice: w_RscStructuredTextLeft
 		{
 			idc = genstore_item_TEXT;
@@ -95,6 +81,29 @@ class genstored
 
 	class Controls
 	{
+		class PlayerEditBox:w_RscEdit
+		{
+			idc = genstore_sort;
+			x = GenStoreMainBG_X + (0.434 * SZ_SCALE);
+			y = GenStoreMainBG_Y + (0.507 * SZ_SCALE);
+			w = 0.120 * SZ_SCALE;
+			h = 0.040 * SZ_SCALE;
+			colorDisabled[] = {1,1,1,0.3};
+			sizeEx = 0.032;
+			
+		};
+		class warnMessageButton: w_RscButton
+		{
+			idc = -1;
+			action = "[8] call populateGeneralStore";
+			text = "sort";
+			sizeEx = 0.032;
+
+			x = GenStoreMainBG_X + (0.580 * SZ_SCALE);
+			y = GenStoreMainBG_Y + (0.507 * SZ_SCALE);
+			w = 0.080 * SZ_SCALE;
+			h = 0.040 * SZ_SCALE;
+		};
 		class SelectionList: w_RscList
 		{
 			idc = genstore_item_list;

@@ -3,7 +3,7 @@ private ["_perklevel", "_requirelvl","_var"];
 _requirelvl = 10000;
 _perklevel = player getVariable["animalpoints",0];
 
-if(_perklevel > _requirelvl) then {
+if(_perklevel >= _requirelvl) then {
 ANIAMLBOMB = true;
 }else{
 

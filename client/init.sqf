@@ -52,10 +52,15 @@ BASECORE =false;
 MULTIBUY=false;
 ANIMALSWIMMING = false;
 ANIMALBITE =false;
+ANIAMLBOMB = false;
 SEAGULL = false;
-StormTime = missionNamespace getVariable "StormTime";
-if (isNil "StormTime") then
-{StormTime = 3600;};
+ATTACH = false;
+ATTACH_OBJECT = objNull;
+ANIMALMODE = false;
+saveBaseMarket = false;
+StormTime = (missionNamespace getVariable "StormTime");
+[] execVM "client\choco\RandomStorm.sqf";
+
 //Player setup
 player call playerSetupStart;
 
@@ -145,4 +150,4 @@ inGameUISetEventHandler ["Action", "_this call A3W_fnc_inGameUIActionEvent"];
 [] execVM "client\choco\Motd.sqf";
 [] execVM "client\choco\supplyController.sqf";
 
-[] call createBasecoreMarker;
+[] execVM "client\choco\basecoreMarker.sqf";

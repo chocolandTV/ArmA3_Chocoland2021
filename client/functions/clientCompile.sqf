@@ -140,15 +140,16 @@ c_unlock2 = "client\choco\unlock\c_unlock2_multiBuy.sqf" call mf_compile;
 c_unlock3 = "client\choco\unlock\c_unlock3_auto-Flak.sqf" call mf_compile;
 c_unlock4 = "client\choco\unlock\c_unlock4_1ClickBase.sqf" call mf_compile;
 c_unlock5 = "client\choco\unlock\c_unlock5_invisible.sqf" call mf_compile;
-//storm 
-startNuclearStrike = "client\items\nuclearStrike\fn_nuclearStrike.sqf" call mf_compile;
 
+startNuclearStrike = "client\items\nuclearStrike\fn_nuclearStrike.sqf" call mf_compile;
+setVariableToZero ="client\choco\setVariableToZero.sqf" call mf_compile;
 effectStorm = "AL_dust_storm\alias_duststorm_effect.sqf" call mf_compile;
 dustWallStorm = "AL_dust_storm\alias_dust_wall.sqf" call mf_compile;
 createCarrierDestroyer =  "client\choco\createCarrierDestroyer.sqf" call mf_compile;
 nitro = "client\choco\nitro.sqf" call mf_compile;
 goatCart = "client\choco\GoatCart.sqf" call mf_compile;
-createBasecoreMarker = "client\choco\basecoreMarker.sqf" call mf_compile;
+
+chocoDoAction = "client\choco\doActionforSeconds.sqf" call mf_compile;
 
 if (isNil "A3W_fnc_MP") then { A3W_fnc_MP = compile preprocessFileLineNumbers "\A3\functions_f\MP\fn_MP.sqf" };
 if (isNil "A3W_fnc_MPexec") then { A3W_fnc_MPexec = compile preprocessFileLineNumbers "\A3\functions_f\MP\fn_MPexec.sqf" };

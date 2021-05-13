@@ -27,7 +27,7 @@ class EditorData
 	};
 };
 binarizationWanted=0;
-sourceName="arma3.chocoland.tv";
+sourceName="MaldenStorm2035";
 addons[]=
 {
 	"A3_Characters_F",
@@ -241,8 +241,8 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="Arma3.Chocoland.tv- 3in1";
-		overviewText="Chocoland - 3in1- Fun Server in  RPG style - Discord discord.chocoland.tv";
+		briefingName="MaldenStorm2035-Arma3.Chocoland.tv";
+		overviewText="MaldenStorm 2035 is a new crisis experience, a map where you have 3 Elements - Battle - Basebuilding and Hide and Seek- Discord discord.chocoland.tv";
 		resistanceWest=0;
 		timeOfChanges=3e+038;
 		startWeather=0;

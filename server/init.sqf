@@ -19,9 +19,7 @@ if (isServer) then
 	SERVERSPAWNING = true;
 	vChecksum = compileFinal str call A3W_fnc_generateKey;
 
-	//addMissionEventHandler ["EntityRespawned", { diag_log format ["test123 Respawned %1", _this] }];
 
-	// Corpse deletion on disconnect if player alive and player saving on + inventory save
 	addMissionEventHandler ["HandleDisconnect",
 	{
 		params ["_unit", "_id", "_uid", "_name"];
