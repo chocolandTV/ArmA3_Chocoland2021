@@ -27,7 +27,12 @@ forEach
 	["Choco_customKeys_Parastore",[63]], //F5
 	["Choco_customKeys_MoveUP",[19]], // object move up R
 	["Choco_customKeys_MoveDown",[20]], // object move down T
-	["Choco_customKeys_SmartAmmo",[61]] // F3 smartAmmo
+	["Choco_customKeys_AttachW",[17]],//attach W
+	["Choco_customKeys_AttachA",[30]],// attach A
+	["Choco_customKeys_AttachS",[31]],// attach S
+	["Choco_customKeys_AttachD",[32]],// attach D
+	["Choco_customKeys_AttachESC",[1]],// attach ESC
+	["Choco_customKeys_SmartAmmo",[61]]// F3 smartAmmo
 ];
 
 _voiceKeys = [];

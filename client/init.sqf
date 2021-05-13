@@ -56,7 +56,14 @@ ANIAMLBOMB = false;
 SEAGULL = false;
 ATTACH = false;
 ATTACH_OBJECT = objNull;
+ATTACHING=false;
+ATTACHING_VEHICLE=objNull;
+ATTACHING_VEHICLE_TWO= objNull;
+ATTACH_X= 0;
+ATTACH_Y= 0;
+
 ANIMALMODE = false;
+ANIMALNEARBY = false;
 saveBaseMarket = false;
 StormTime = (missionNamespace getVariable "StormTime");
 [] execVM "client\choco\RandomStorm.sqf";

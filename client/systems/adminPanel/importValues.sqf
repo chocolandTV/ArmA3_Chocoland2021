@@ -83,12 +83,12 @@ if (_uid call isAdmin) then
 		{
 			if (getPlayerUID _x == _data1) exitwith {
 				_itemsText ctrlSetText format["Items: %1",weapons _x];
-				_currentGunText ctrlSetText format["Money: %1", [_x getVariable ["cmoney",0]] call fn_numbersText];
 				_skinText ctrlSetText format["Class: %1",typeOf(_x)];
 				_posText ctrlSetText format["Position: %1",position _x];
 				_objectText ctrlSetText format["Slot: %1",_x];
 				_uidText ctrlSetText format ["UID: %1", getPlayerUID _x];
 				_steamButton ctrlSetStructuredText parseText format ["<a href='http://steamcommunity.com/profiles/%1'><img image='\A3\ui_f\data\gui\RscCommon\RscButtonMenuSteam\steam_ca.paa' size='1.1'/></a>", getPlayerUID _x];
+				_currentGunText ctrlSetText format["Money: %1", [_x getVariable ["cmoney",0]] call fn_numbersText];
 				_playerBasebuilder ctrlSetText format["Basebuilderpoints: %1",[_x getVariable ["basebuilder",0]] call fn_numbersText];
 				_playerBountypoints ctrlSetText format["Bountypoint: %1",[_x getVariable ["bmoney",0]] call fn_numbersText];
 				_playerAnimalpoints ctrlSetText format["Animalpoints: %1",[_x getVariable ["animalpoints",0]] call fn_numbersText];

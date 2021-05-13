@@ -96,7 +96,7 @@ class genstored
 		{
 			idc = -1;
 			action = "[8] call populateGeneralStore";
-			text = "sort";
+			text = "search";
 			sizeEx = 0.032;
 
 			x = GenStoreMainBG_X + (0.580 * SZ_SCALE);

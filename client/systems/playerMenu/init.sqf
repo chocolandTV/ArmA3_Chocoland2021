@@ -7,7 +7,7 @@ if(dialog) exitwith{};
 
 disableSerialization;
 
-private["_Dialog","_foodtext","_watertext","_moneytext","_mvalue","_rogue","_resistance","_resi","_var1","_var2","_var3"];
+private["_Dialog","_foodtext","_watertext","_moneytext","_mvalue","_rogue","_resistance","_resi","_var1","_var2","_var3","_money"];
 
 _playerDialog = createDialog "playerSettings";
 
@@ -94,9 +94,10 @@ _var2 =  player getVariable ["animalpoints", 0];
 _var3 =  player getVariable ["basebuilder", 0];
 _resi = (_var1 + _var2 + _var3)  / 180;
 _resistance ctrlSetText format["Resistance points : %1",[_resi] call fn_numbersText];
+_money = player getVariable ["cmoney", 0];
 {
 	_mvalue lbSetData [_mvalue lbAdd format ["€%1", [_x] call fn_numbersText], str _x];
-} forEach [5000, 10000, 25000, 50000, 100000, 250000, 1000000];
+} forEach [5000, 10000, 25000, 50000, 100000, 250000, 1000000,_money];
 
 [] spawn
 {

@@ -281,6 +281,7 @@ private ["_obj"];
 params ["_pos"];
 _objClass = selectRandom _animalArray;
 _obj = _animalGroup createUnit [_objClass, _pos,[],0,"NONE"];
+_obj setVariable["animal",true,true];
 _obj addEventHandler ["killed", {[this]call _animalBomb;}];
 _obj setPos _pos;
 };

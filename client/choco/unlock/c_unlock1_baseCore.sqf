@@ -13,8 +13,7 @@ if(_perklevel >= _requirelvl) then {
                 if(_playerMoney < 10000)exitWith{
                     player globalChat "Action failed! - the basecore costs 10.000$";
                 };
-                _player setVariable ["cmoney", _playerMoney - 10000, true];
-                [_player, -_price] call A3W_fnc_setCMoney;
+                [player, -_price] call A3W_fnc_setCMoney;
                 [] spawn fn_savePlayerData;
                 0 spawn createBasecore;
             }

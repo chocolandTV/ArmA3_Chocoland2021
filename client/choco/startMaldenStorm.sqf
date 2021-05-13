@@ -25,5 +25,5 @@ titleText ["***********<br/><t color='#ff0000' size='2'>Storm incoming - get ins
 sleep 10;
 
 [] execVM "AL_dust_storm\alias_duststorm_effect.sqf";
-
+0 call _sandStormDmg;
 

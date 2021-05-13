@@ -6,10 +6,16 @@ _var3 = player getVariable["basebuilder", 0];
 _var4 = player getVariable["animalpoints", 0];
  saveData = [_var1,_var2,_var3,_var4];
 };
+ClientLoadData= {
+player setVariable ["cmoney",(saveData select 0),true];
+player setVariable ["bmoney",(saveData select 1),true];
+player setVariable ["basebuilder",(saveData select 2),true];
+player setVariable ["animalpoints",(saveData select 3),true];
+};
 _skin=(_this select 0);
 ANIMALMODE= true;
-call fn_savePlayerData;
-call ClientSaveData;
+
+0 call ClientSaveData;
 skinText = typeOf(player);
 _oldUnit = player;
 _type = _skin;
@@ -50,12 +56,12 @@ sleep 0.3;
 newUnit addweapon "ItemMap";
 newUnit addweapon "ItemCompass";
 newUnit addweapon "ItemWatch";
-
+0 call ClientLoadData; 
 player addEventHandler ["Killed", {
 player setDamage 0;
 _pos = getMarkerPos "RespawnRandom";
 _playerPos =[[[_pos, 6000]],["water"]] call BIS_fnc_randomPos;
-_playerPos set [2, 600];
+
 player setPos _playerPos;
 }];
 

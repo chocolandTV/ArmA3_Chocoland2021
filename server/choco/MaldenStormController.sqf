@@ -1,8 +1,8 @@
 MALDENSTORMENABLED = true;
-
+StormTime=0;
 while {MALDENSTORMENABLED} do {
 	if (isServer) then {
-		StormTime=0;
+		
 		randomize = floor (random 3600);
 		pause_between_storm = 3600;
 		StormTime = randomize + pause_between_storm;

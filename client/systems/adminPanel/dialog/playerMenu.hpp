@@ -119,8 +119,8 @@ class PlayersMenu
 
 		class PlayerGunText: w_RscText
 		{
-			idc = playerMenuPlayerGun;
-			text = "Money:";
+			idc = playerMenuPlayerPos;
+			text = "Position:";
 			sizeEx = 0.030;
 			x = 0.52 * (4/3) * SZ_SCALE_ABS + safezoneX;
 			y = 0.275 * SZ_SCALE_ABS + safezoneY;
@@ -152,8 +152,8 @@ class PlayersMenu
 
 		class PlayerPosistionText: w_RscText
 		{
-			idc = playerMenuPlayerPos;
-			text = "Position:";
+			idc = playerMenuPlayerGun;
+			text = "Money:";
 			sizeEx = 0.030;
 			x = 0.52 * (4/3) * SZ_SCALE_ABS + safezoneX;
 			y = 0.335 * SZ_SCALE_ABS + safezoneY;
@@ -262,7 +262,7 @@ class PlayersMenu
 		class RemoveAllMoneyButton: w_RscButton
 		{
 			idc = -1;
-			text = "Remove Money";
+			text = "Remove/set Money";
 			onButtonClick = "[5] execVM 'client\systems\adminPanel\playerSelect.sqf'";
 			x = 0.3705 * (4/3) * SZ_SCALE_ABS + safezoneX;
 			y = 0.70 * SZ_SCALE_ABS + safezoneY;
@@ -270,16 +270,16 @@ class PlayersMenu
 			h = 0.04 * SZ_SCALE_ABS;
 		};
 
-		/*class RemoveAllWeaponsButton: w_RscButton
+		class RemoveAllWeaponsButton: w_RscButton
 		{
 			idc = -1;
-			text = "Remove Weapons";
+			text = "kick player";
 			onButtonClick = "[6] execVM 'client\systems\adminPanel\playerSelect.sqf'";
 			x = 0.3705 * (4/3) * SZ_SCALE_ABS + safezoneX;
 			y = 0.748 * SZ_SCALE_ABS + safezoneY;
 			w = 0.105 * (4/3) * SZ_SCALE_ABS;
 			h = 0.04 * SZ_SCALE_ABS;
-		};*/
+		};
 
 		/*class CheckPlayerGearButton: w_RscButton
 		{
@@ -299,7 +299,7 @@ class PlayersMenu
 			onButtonClick = "[1] execVM 'client\systems\adminPanel\playerSelect.sqf'";
 			x = 0.600 * (4/3) * SZ_SCALE_ABS + safezoneX;
 			y = 0.70 * SZ_SCALE_ABS + safezoneY;
-			w = 0.05 * (4/3) * SZ_SCALE_ABS;
+			w = 0.10 * (4/3) * SZ_SCALE_ABS;
 			h = 0.04 * SZ_SCALE_ABS;
 		};
 

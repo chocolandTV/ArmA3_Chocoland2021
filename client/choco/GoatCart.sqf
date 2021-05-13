@@ -3,13 +3,17 @@ _pos = getposatl player;
  _pos = [(_pos select 0)+5*sin(dir),(_pos select 1)+5*cos(dir),(_pos select 2)];
  _grp = creategroup civilian;
 
- _spawn = _grp createunit ["Goat_random_F",_pos,[],0,"NONE"];  _spawn setPos _pos; 
-_spawn attachto [spawn2,[0,-0.55,-1.2]];
+spawn = _grp createunit ["Goat_random_F",_pos,[],0,"FORM"];  
+spawn setPos _pos; 
+publicVariable"spawn";
+spawn attachto [spawn2,[0,-0.55,-1.2]];
  spawn2 = createVehicle["C_Quadbike_01_F",_pos,[], 0,"CAN_COLLIDE"];
  spawn2 setdir (getdir player);
- spawn2 setObjectTextureGlobal [0, ""];
- spawn2 setObjectTextureGlobal [1, ""];
-
+ spawn2 setObjectTexture [0, ""];
+ spawn2 setObjectTexture [1, ""];
+ publicVariable"spawn2";
+ chocostring = format["spawn2 setObjectTexture [0, '']; spawn2 setObjectTexture [1, ''];"];
+ publicVariable"chocostring";
  
  player moveindriver spawn2;
  player assignAsDriver spawn2;

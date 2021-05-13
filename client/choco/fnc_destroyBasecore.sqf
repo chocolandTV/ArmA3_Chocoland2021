@@ -1,5 +1,5 @@
 private ["_basecore","_wallet", "_npc"];
-_basecore = _this select 0;
+_basecore = nearestObject [player, "Land_Device_assembled_F"];
  _npc = nearestObject [player, "B_G_Survivor_F"];
 _wallet = _npc getVariable["wallet",1000];
 
@@ -16,14 +16,17 @@ titleText ["<t color='#ffffff' size='3'>baseCore destroyed, you got some money.<
 
 // destroy basecore
 _basecore setDamage 1;
+sleep 10;
+deleteVehicle _basecore;
 }else{
     if(alive _basecore && (_basecore getVariable["guid",""]) == str (getPlayerUID player))then {
         doaction = true;
         [20] spawn chocoDoAction;
         waitUntil{!doaction};
         titleText ["<t color='#ffffff' size='3'>You destroyed your basecore, you got 10.000 back.</t>", "PLAIN DOWN", -1, true, true];
-        [player, -10000] call A3W_fnc_setCMoney;
-        [] spawn fn_savePlayerData;
+        [player, +10000] call A3W_fnc_setCMoney;
+        
         _basecore setDamage 1;
+        _npc setDamage 1;
     };
 };

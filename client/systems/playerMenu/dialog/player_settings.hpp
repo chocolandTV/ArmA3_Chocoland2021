@@ -202,7 +202,7 @@ class playerSettings {
 			idc = -1;
 			text = "Disable Infos";
 			onButtonClick = "NOINFO = true;hint'Info disabled';";
-			x = 0.25; y = 0.57;
+			x = 0.27; y = 0.57;
 			w = 0.15; h = 0.033 * safezoneH;
 		};
 		class b_unlock_1 : w_RscButton {

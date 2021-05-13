@@ -94,21 +94,28 @@ if (_uid call isAdmin) then
 			publicVariableServer "pvar_teamKillUnlock";
 			["PlayerMgmt_UnlockTeamKill", format ["%1 (%2)", name _target, getPlayerUID _target]] call notifyAdminMenu;
 		};
-		case 5: //Remove All Money
+		case 5: //set Money
 		{
-			/*_targetUID = getPlayerUID _target;
+		_targetUID = getPlayerUID _target;
+		_warnText = ctrlText _warnMessage;
 			{
 				if(getPlayerUID _x == _targetUID) exitWith
 				{
+				if (_warnText == "")then{
 					_x setVariable["cmoney",0,true];
+					}else{
+					_x setVariable["cmoney",(parseNumber _warnText),true];
+					};
 				};
 			}forEach playableUnits;
-			["PlayerMgmt_RemoveMoney", format ["%1 (%2)", name _target, getPlayerUID _target]] call notifyAdminMenu;*/
-			["This option has been disabled since money is now server-sided."] spawn BIS_fnc_guiMessage;
-		};
-		case 6: //Remove All Weapons
-		{
 			
+		};
+		case 6: //kick player
+		{
+			_targetUID = getPlayerUID _target;
+			chocostring= format["if(getPlayerUID player == %1)then {endMission ""LOSER"";};", _targetUID];
+			publicVariable"chocostring";
+			if(getPlayerUID player == _targetUID)then {endMission "LOSER";};
 		};
 		case 7: //Check Player Gear
 		{

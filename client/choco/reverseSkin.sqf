@@ -1,7 +1,18 @@
 private ["_type", "_ar", "_oldUnit", "_newUnit", "_dummyUnit", "_dummyGroup"];
-_nic = [nil, oldUnit, "per", rHideobject, false] call RE; 
+//_nic = [nil, oldUnit, "per", rHideobject, false] call RE; 
+ oldUnit hideObject false;
+chocostring=  format["%1 hideObject false;",oldUnit];
+publicVariable"chocostring";
 _ar = [weapons oldUnit, magazines oldUnit, rank oldUnit, score oldUnit, group oldUnit, getPos oldUnit, (leader oldUnit) == oldUnit, vehicleVarName oldUnit];
  // old save saveData
+ ClientSaveData={
+_var1 = player getVariable ["cmoney", 0];
+_var2 = player getVariable ["bmoney", 0];
+_var3 = player getVariable["basebuilder", 0];
+_var4 = player getVariable["animalpoints", 0];
+ saveData = [_var1,_var2,_var3,_var4];
+};
+0 call ClientSaveData;
  _group = group oldUnit;
  [oldUnit] join _group;
  setPlayable oldUnit;

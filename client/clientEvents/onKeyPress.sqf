@@ -60,6 +60,36 @@ switch (true) do
 	{
 		showPlayerNames = if (isNil "showPlayerNames") then { true } else { !showPlayerNames };
 	};
+	//AttachW
+	case (_key in Choco_customKeys_AttachW):
+	{
+		if(ATTACHING)then{
+		ATTACH_X= ATTACH_X + 0.2;};
+	};
+	//AttachA
+	case (_key in Choco_customKeys_AttachA):
+	{
+		if(ATTACHING)then{
+		ATTACH_X= ATTACH_Y + 0.2;};
+	};
+	//AttachS
+	case (_key in Choco_customKeys_AttachS):
+	{
+		if(ATTACHING)then{
+		ATTACH_X= ATTACH_X - 0.2;};
+	};
+	//AttachD
+	case (_key in Choco_customKeys_AttachD):
+	{
+		if(ATTACHING)then{
+		ATTACH_X= ATTACH_Y - 0.2;};
+	};
+	//AttachESC
+	case (_key in Choco_customKeys_AttachESC):
+	{
+		if(ATTACHING)then{
+		ATTACHING = false;};
+	};
 
 	// Earplugs - End Key
 	case (_key in A3W_customKeys_earPlugs):
